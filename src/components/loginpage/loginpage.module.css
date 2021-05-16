@@ -1,0 +1,20 @@
+.loginpage_container{
+  
+   width: 100%;
+  display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    height: 100vh;
+   
+}
+
+.loginpage_flex_one{
+  width: calc((1200px)/2);
+   
+    
+  }
+  
+.loginpage_flex_two{
+    width: calc((1200px)/2);
+    
+} 

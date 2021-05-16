@@ -1,0 +1,35 @@
+.navbar_logo{
+    height: 50px;
+    width: 50px;
+
+}
+
+
+.user_image{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+}
+
+.user_icon,.chat_icon{
+    padding: 10px;
+    background-color: #E4E6EB;
+    border-radius: 50%;
+    margin: 0 5px;
+}
+
+.link_user{
+    text-decoration: none;
+    color:black;
+    
+}
+
+.link_user:hover{
+    color: black;
+}
+
+.navbar_right_side{
+    float: right;
+    padding:8px 0px;    
+    
+}

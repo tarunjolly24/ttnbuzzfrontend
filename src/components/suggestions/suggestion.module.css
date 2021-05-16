@@ -1,0 +1,43 @@
+.suggestion{
+    /* margin-top: 10px; */
+    background-color: #fff;
+    overflow-y: scroll;
+    height: 60vh;
+    border-radius:12px;   
+    /* scrollbar-color: blue orange; */
+    
+            /* position: relative; */
+}
+
+.flexcontainer{
+    display: flex;
+    position: sticky;
+    top:0;
+    align-items: center;
+    background-color: white;
+    /* width: auto; */
+    /* height: 200px; */
+    justify-content: space-between;
+    margin-bottom:10px;
+    padding: 0px 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+    
+}
+.flexitemone{
+    padding-top:10px ;
+}
+.flexcontainertwo{
+    padding:20px 10px;
+    width: 90%;  
+    margin: auto;
+}
+
+.flexitemone p{
+    font-weight: bold;
+}
+.flexitemtwo i{
+    padding: 10px;
+    background-color: #E4E6EB;
+    border-radius: 50%;
+    /* margin: 0 5px; */
+}

@@ -1,0 +1,13 @@
+.profilecontainer{
+    background-image: linear-gradient(#F0F2F5,#CAC8C7, #F0F2F5);
+    background-repeat: no-repeat;
+    background-size: cover center;
+    /* height: 100vh;     */
+  
+}
+
+.profile_page_container{
+    width: 90%;
+    margin:auto;
+    margin-top: 40px;
+}

@@ -1,0 +1,27 @@
+.usersuggestioncontainer{
+    margin:15px 0px; 
+    text-align: center;
+}
+
+.link_user{
+    text-decoration: none;
+    color:black;
+}
+
+.link_user:hover{
+    color: black;
+}
+
+.user_image{
+    height: 40px;
+    width: 40px;
+    margin-right: 5px;
+    border-radius: 50%;
+}
+
+.addfriendbtn{
+    border: none;
+    background:none;
+    margin:0 10px;
+    color:#4d99fd;
+}
