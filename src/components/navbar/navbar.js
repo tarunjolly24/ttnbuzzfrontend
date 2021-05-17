@@ -15,8 +15,9 @@ const Navbar=(props)=>{
                 <div className="col-6">
                     <div className={classes.navbar_right_side}>
                     <Link to=""className={classes.link_user}  ><img className={classes.user_image} src="./images/user.jpeg" alt="user"></img> <span >Tarun Jolly</span> </Link>
-                    <span className={classes.chat_icon}><i class="fab fa-facebook-messenger"></i></span>
-                    <span className={classes.user_icon} ><i class="fas fa-user-check"></i></span>
+                    <Link to="/logout">Logout</Link>
+                    <span className={classes.chat_icon}><i className="fab fa-facebook-messenger"></i></span>
+                    <span className={classes.user_icon} ><i className="fas fa-user-check"></i></span>
                     </div>
                 </div>
 

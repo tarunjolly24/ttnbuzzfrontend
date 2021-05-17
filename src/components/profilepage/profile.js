@@ -1,9 +1,10 @@
-import axios from 'axios';
-import React, { useEffect } from 'react';
+// import axios from 'axios';
+import React from 'react';
 import Navbar from '../navbar/navbar';
 import Suggestions from '../suggestions/suggestion';
 import classes from './profile.module.css';
-import Userprofile from './userprofile/userprofile';
+import Myprofile from './myprofile/myprofile';
+import { useEffect } from 'react';
 const Profile = (props) => {
     // useEffect(() => {
     //     axios({ method: 'GET', url: 'http://localhost:5000/profile/userprofile' }).then((res) => {
@@ -18,13 +19,16 @@ const Profile = (props) => {
     // })
     // console.log()
 //   }
+    useEffect(()=>{
+        
+    })
     return (
         <div className={classes.profilecontainer}>
             <Navbar></Navbar>
             <div className={classes.profile_page_container}>
             <div className="row">
                 <div className="col-9">
-            <Userprofile></Userprofile>
+            <Myprofile></Myprofile>
 
                 </div>
                 <div className="col-3">

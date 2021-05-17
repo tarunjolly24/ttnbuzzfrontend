@@ -12,7 +12,7 @@ const Suggestions = (props) => {
         <div className={classes.suggestion}>
             <div className={classes.flexcontainer}>
                 <div className={classes.flexitemone}><p>Suggestions</p></div>
-                <div className={classes.flexitemtwo} onClick={inputHandler} ><i class="fas fa-search"></i></div>
+                <div className={classes.flexitemtwo} onClick={inputHandler} ><i className="fas fa-search"></i></div>
             </div>
                 {searchBox}
             <div className={classes.flexcontainertwo}>
