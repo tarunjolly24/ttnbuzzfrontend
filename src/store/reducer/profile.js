@@ -1,32 +1,20 @@
+import * as actiontypes from '../action/actiontypes';
+
 import * as actionTypes from '../action/actiontypes';
 const initailState={
-    token:null,
-    userDetails:null,
+    profileDetails:null,
     error:null,
     loading:false,
-    authRedirectPath:'/',
 };
-const settoken=(state,action)=>{
-    return {
-        ...state,
-        token:action.token
-    }
-}
 
-const logout=(state,action)=>{
-    return {
-        ...state,
-        token:null,
-    }
-}
-const getUserDetailsSuccess=(state,action)=>{
+const getProfileSuccess=(state,action)=>{
     return{
         ...state,
-        userDetails:action.payload,
+        profileDetails:action.payload,
         loading:false,
     }
 } 
-const getUserDetailsStart=(state,action)=>{
+const getProfileStart=(state,action)=>{
     return{
         ...state,
         loading:true,

@@ -1,5 +1,5 @@
-import classes from './suggestion.module.css';
-import Usersuggestion from './usersuggestion/usersuggestion';
+import classes from './contact.module.css';
+import Usercontact from './usercontact/usercontact';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -19,7 +19,7 @@ const Suggestions = (props) => {
    let suggest=null;
    if(suggestions!=null){
        suggest=suggestions.map((item)=>{
-           return <Usersuggestion></Usersuggestion>
+           return <Usercontact></Usercontact>
        })
    }
 
@@ -27,20 +27,12 @@ const Suggestions = (props) => {
     return (
         <div className={classes.suggestion}>
             <div className={classes.flexcontainer}>
-                <div className={classes.flexitemone}><p>Suggestions</p></div>
+                <div className={classes.flexitemone}><p>Contacts</p></div>
                 <div className={classes.flexitemtwo} onClick={inputHandler} ><i className="fas fa-search"></i></div>
             </div>
                 {searchBox}
             <div className={classes.flexcontainertwo}>
-                {/* <Usersuggestion></Usersuggestion>
-                <Usersuggestion></Usersuggestion>
-                <Usersuggestion></Usersuggestion>
-                <Usersuggestion></Usersuggestion>
-                <Usersuggestion></Usersuggestion>
-                <Usersuggestion></Usersuggestion>
-                <Usersuggestion></Usersuggestion>
-                <Usersuggestion></Usersuggestion>
-                <Usersuggestion></Usersuggestion> */}
+                
                 {suggest}
             </div>
         </div>

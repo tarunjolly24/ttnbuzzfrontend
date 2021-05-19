@@ -16,7 +16,7 @@
     border-top-right-radius: 12px;
     width: 100%;
     display: block;
-    /* object-fit:none; */
+    object-fit:cover;
     height: 40vh;
     /* position: relative; */
 }

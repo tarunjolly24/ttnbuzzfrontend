@@ -1,0 +1,36 @@
+.recent_container{
+    padding: 20px;
+    border-radius: 5px;
+}
+.recent_container i{
+    padding-right:5px;
+}
+.recent_container h6{
+    margin: 20px 0px;
+}
+
+.recent_container p{
+    font-size:12px;
+}
+
+.flex_con_three i{
+    font-size: 10px;
+    margin-right:5px ;
+    padding: 5px;
+    border: 1px solid #E1E1E1;
+    border-radius: 50%;    
+}
+
+.showmore{
+    margin-bottom:20px ;
+    color:#5CA1D3;
+    font-size: 16px;
+
+}
+
+.showmore i{
+    border:none;
+    font-size: 16px;
+
+    
+}
