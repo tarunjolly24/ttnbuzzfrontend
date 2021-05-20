@@ -18,10 +18,24 @@ const Suggestions = (props) => {
                 setsuggestion(response.data);
        })
    },[])
+   const addfriendHandler=(receiverProfileId)=>{
+    //action dispatch
+    axios.post('http://localhost:5000/friends/sentrequest',{receiverProfileId:receiverProfileId})
+    .then((res)=>{
+        console.log(res);
+        const arr= suggestions.filter((item,index)=>{
+           if(item._id!==receiverProfileId)return true;
+        })
+        setsuggestion(arr);
+    })
+            
+}
+
    let suggest=null;
    if(suggestions!=null){
        suggest=suggestions.map((item)=>{
-           return <Usersuggestion></Usersuggestion>
+           
+           return <Usersuggestion addfriend={item} addfriendHandler={addfriendHandler} ></Usersuggestion>
        })
    }
 

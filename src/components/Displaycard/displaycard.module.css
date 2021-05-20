@@ -1,14 +1,21 @@
 .display_container{
-    width: 300px;
+    /* width: 300px; */
+    /* margin:40px; */
+    background-color: #fff;
+    margin-bottom:40px ;
+    border-radius: 12px;
 }
 
 .cover_con{
-    width:300px;
+    /* width:300px; */
+    width: 100%;
     height:20vh;
 }
 
 .cover_con img{
-    width: 300px;
+    width: 100%;
+    border-radius:12px;
+    /* width: 300px; */
     height: 20vh;
 }
 

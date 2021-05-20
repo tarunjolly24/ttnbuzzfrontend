@@ -1,7 +1,7 @@
 .suggestion{
     /* margin-top: 10px; */
     background-color: #fff;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 60vh;
     border-radius:12px;   
     /* scrollbar-color: blue orange; */

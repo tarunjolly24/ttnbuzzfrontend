@@ -1,0 +1,10 @@
+.home_container{
+    background-image: linear-gradient(#F0F2F5,#CAC8C7, #F0F2F5);
+    background-repeat: no-repeat;
+    background-size: cover center;
+    /* padding-left:40px; */
+    /* padding-right:40px; */
+    padding-bottom: 40px;
+    /* padding: 40px; */
+    /* text-align: center; */
+}   

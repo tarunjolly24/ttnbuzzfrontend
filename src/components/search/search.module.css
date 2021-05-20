@@ -2,15 +2,25 @@
     height: 40px;
     width: 40px;
     border-radius: 50%;
+    margin-left:20px;
+
+}
+.search_container{
+    text-align: center;
+    margin: 0 auto;
+    margin:0px 20px;
+    margin-bottom: 40px;
 
 }
 .search_container_flex{
     display: flex;
-    justify-content: space-evenly;
+    /* justify-content: ; */
     align-items: center;
-    /* width: 50%; */
+    /* text-align: center; */
+    width: 100%;
+    margin: 0 auto;
     padding: 10px 0px;
-    background-color: black;
+    background-color: #fff;
     border-radius: 5px;
 }
 .search_bar{
@@ -18,9 +28,18 @@
     border-radius: 25px;
     background-color: #F0F2F5;
     border:none;
+    width: 400px;
+    margin:0px 15px;
 }
 input:focus, textarea:focus, select:focus{
     outline: none;
+}
+.flex_con_two{
+    /* flex: 2; */
+}
+.flex_con_three{
+    /* flex: 1; */
+    margin-right:10px ;
 }
 
 .gallery i{

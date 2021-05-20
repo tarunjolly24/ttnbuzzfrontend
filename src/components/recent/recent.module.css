@@ -1,6 +1,7 @@
 .recent_container{
     padding: 20px;
     border-radius: 5px;
+    background-color: #fff;
 }
 .recent_container i{
     padding-right:5px;

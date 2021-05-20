@@ -14,7 +14,7 @@ export const settoken=function(){
     // let t1=performance.now();
     // console.log((t1-t0)/60);
     // let token=document.cookie.split('=')[1];
-    if(localStorage.getItem('token')===null || localStorage.getItem('token')===''){
+    if(localStorage.getItem('token')===null || localStorage.getItem('token')==='' ){
         console.log(document.cookie);
         localStorage.setItem('token',document.cookie);
     }

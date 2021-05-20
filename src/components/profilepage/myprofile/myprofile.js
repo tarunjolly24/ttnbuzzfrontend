@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import { withRouter } from 'react-router';
 import Otherprofile from '../otherprofile/otherprofile';
-
+const logo=require('../../../img/user.jpeg');
 const Myprofile = (props) => {
     console.log(props);
     console.log(props.match.params.id);
@@ -84,6 +84,31 @@ const Myprofile = (props) => {
     const resetHandler=()=>{
         setmydetails(props.profiledetails);
     }
+    const imageChangeHandler=(e)=>{
+        // e.preventDefault();
+        
+        const files=Array.from(e.target.files);
+        // console.log(e.target.files[0]);
+        console.log(files);
+        const formdata = new FormData()
+        const types = ['image/png', 'image/jpeg', 'image/gif']
+
+        files.forEach((file, i) => {
+      formdata.append(i, file)
+    })
+        console.log(formdata);
+        axios.post('http://localhost:5000/image-upload',formdata, {
+            headers: {
+              'Content-Type': 'multipart/form-data'
+            }
+        })
+        .then(response=>{
+            console.log(response);
+        })
+
+
+
+    }
     let form =null;
     console.log(props);
     if(props.loading===false && props.profiledetails!==null){
@@ -147,18 +172,18 @@ const Myprofile = (props) => {
         <div className={classes.userprofilecontainer}>
             <div>
                 <div className={classes.cover_img_con}>
-                    <img className={classes.cover_img} src={mydetails.coverImage===''?'./images/cover.jpg':mydetails.coverImage} alt="cover"></img>
+                    <img className={classes.cover_img} src={mydetails.coverImage===''?'https://res.cloudinary.com/ddcgdnhqp/image/upload/v1621517683/hijkapix5ybrnjpwy5nr.jpg':mydetails.coverImage} alt="cover"></img>
                 </div>
                 <div className={classes.profile_img_con}>
-                    <img className={classes.profile_img} src={mydetails.profileImage===''?'./images/user.jpeg':mydetails.profileImage} alt="profile"></img>
+                    <img className={classes.profile_img} src={mydetails.profileImage===''?'https://res.cloudinary.com/ddcgdnhqp/image/upload/v1621521549/pv5ujsrzwgqqdfh3hcv1.jpg':mydetails.profileImage} alt="profile"></img>
                     <form className={classes.input_image}>
                         <label htmlFor="files" className="btn"><i className="fas  fa-camera fa-2x"></i></label>
-                        <input id="files" style={{ visibility: 'hidden' }} type="file"></input>
+                        <input id="files" style={{ visibility: 'hidden' }} onChange={(e)=>imageChangeHandler(e)} type="file"></input>
                     </form>
                 </div>
             </div>
             <div className={classes.user_name}>
-                <h2>Tarun Jolly</h2>
+                <h2>{mydetails.firstName+" "+mydetails.lastName}</h2>
             </div>
             <div className={classes.form_container}>
                 {form}

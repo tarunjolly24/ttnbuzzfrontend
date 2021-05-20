@@ -1,0 +1,142 @@
+.feed_container{
+    /* text-align: center; */
+    color:#bbbbbb;
+    padding: 20px;
+    margin: 20px;
+    margin-bottom: 40px;
+    padding-bottom:10px;
+    background-color: #fff;
+    border-radius: 12px;
+}
+
+.user_image{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+
+}
+.search_container_flex{
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    /* width: 50%; */
+    padding: 10px 0px;
+    background-color: #fff;
+    border-radius: 5px;
+}
+.search_bar{
+    margin: 0 10px;
+    width:500px;
+    padding:5px 20px;
+    border-radius: 25px;
+    background-color: #F0F2F5;
+    border:none;
+}
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
+
+
+
+.usersuggestioncontainer{
+    margin:15px 0px; 
+    text-align: center;
+}
+
+.link_user{
+    text-decoration: none;
+    color:black;
+}
+
+.link_user:hover{
+    color: black;
+}
+
+.post_image{
+    text-align: center;
+    margin-bottom:10px ;
+    width: auto;
+}
+
+.post_image img{
+    width: 100%;
+    border-radius: 15px;
+}
+
+hr{
+    margin:5px 0;
+}
+
+.flex_container_one{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+
+
+}
+
+.flex_inner_item{
+    display: flex;
+}
+
+.flex_inner_one_container{
+    display: flex;
+    flex-direction: column;
+}
+
+.flex_container_two{
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex2_item_one{
+    display: flex;
+}
+
+.btn_container{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btn_container button{
+    border: none;
+    padding: 10px;
+    background-color: #fff;
+    color:#666D75;
+}
+
+.like_btn i{
+    font-size: 22px;
+    padding: 0 5px; 
+}
+.dislike_btn i{
+    border:1px solid #b8babb;
+    border-radius: 50%;
+    /* font-size: 22px; */
+    margin: 0 5px;
+    padding: 5px; 
+}
+
+.comment_btn i{
+    font-size: 22px;
+    padding: 0 5px; 
+}
+
+.btn_container span{
+    font-size: 20px;
+}
+
+.flex_inner_one_container{
+    margin: 0 10px;
+}
+
+.flex_item_two{
+    background-color:#F2F2F2;   
+    color:#6E747C;
+    text-align: center;
+    font-size: 18px;
+    padding:10px 10px;
+    margin:0 10px;
+    border-radius: 50%; 
+}
+

@@ -3,16 +3,17 @@ import Usercontact from './usercontact/usercontact';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const Suggestions = (props) => {
+const Contact = (props) => {
    const [inputShow,setinputshow]= useState(false);
-   const [suggestions,setsuggestion]=useState(null);
+   const [suggestions,setsuggestion]=useState([]);
    const inputHandler=()=>{
         setinputshow(!inputShow);
    }
    useEffect(()=>{
-       axios.get("http://localhost:5000/friends/suggestions")
+       axios.get("http://localhost:5000/friends/getallfriends")
        .then((response)=>{
            console.log(response.data);
+           if(Object.keys(response.data).length!==0)
            setsuggestion(response.data);
        })
    },[])
@@ -40,4 +41,4 @@ const Suggestions = (props) => {
 
 }
 
-export default Suggestions;
+export default Contact;

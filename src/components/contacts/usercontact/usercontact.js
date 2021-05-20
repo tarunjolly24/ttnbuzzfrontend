@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import classes from './usercontact.module.css'
-const Usersuggestion = (props) => {
+const UserContact = (props) => {
 
     return (
         <div className={classes.usersuggestioncontainer}>
@@ -11,4 +11,4 @@ const Usersuggestion = (props) => {
 
 }
 
-export default Usersuggestion;
+export default UserContact;

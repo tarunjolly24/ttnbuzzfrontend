@@ -1,9 +1,10 @@
 .suggestion{
     /* margin-top: 10px; */
     background-color: #fff;
-    overflow-y: scroll;
+    overflow-y: auto;
     height: 60vh;
-    border-radius:12px;   
+    border-radius:12px; 
+    margin-bottom: 40px;  
     /* scrollbar-color: blue orange; */
     
             /* position: relative; */
