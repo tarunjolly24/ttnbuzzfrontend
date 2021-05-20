@@ -31,10 +31,12 @@ export const getProfile=function(profileId){
         axios.get(`http://localhost:5000/profile/anyuserprofile?profileId=${profileId}`)
         .then((res)=>{
             //success
+            console.log('response of profile',res);
             let obj={
                 _id:res.data._id,
                 firstName:res.data.firstName,
                 lastName:res.data.lastName,
+                about:res.data.about===undefined?'':res.data.about,
                 dob:res.data.dob===undefined?'':res.data.dob,
                 gender:res.data.gender===undefined?'':res.data.gender,
                 city:res.data.city===undefined?'':res.data.city,

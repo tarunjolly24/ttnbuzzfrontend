@@ -4,6 +4,7 @@ const initailState={
     userDetails:null,
     error:null,
     loading:false,
+    profileId:undefined,
     authRedirectPath:'/',
 };
 const settoken=(state,action)=>{
@@ -24,6 +25,7 @@ const getUserDetailsSuccess=(state,action)=>{
         ...state,
         userDetails:action.payload,
         loading:false,
+        profileId:action.payload._id
     }
 } 
 const getUserDetailsStart=(state,action)=>{

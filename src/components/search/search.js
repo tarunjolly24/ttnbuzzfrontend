@@ -12,7 +12,7 @@ const Search = (props) => {
                     <input className={classes.search_bar} type="text" placeholder="Start a post..."></input>
                 </div>
                 <div className={classes.flex_con_three}>
-                    <label htmlFor="files" className={classes.gallery}><i class="fas fa-file-image"></i><span>Photo/Video</span></label>
+                    <label htmlFor="files" className={classes.gallery}><i className="fas fa-file-image"></i><span>Photo/Video</span></label>
                     <input id="files" style={{ visibility: 'hidden' }} type="file"></input>
                 </div>
             </div>

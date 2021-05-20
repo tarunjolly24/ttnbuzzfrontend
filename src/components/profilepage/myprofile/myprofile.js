@@ -2,10 +2,11 @@ import classes from './myprofile.module.css';
 import React from 'react';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import * as actions from '../../../store/action/auth';
+import * as actions from '../../../store/action/index';
 import { connect } from 'react-redux';
 import axios from 'axios';
 import { withRouter } from 'react-router';
+import Otherprofile from '../otherprofile/otherprofile';
 
 const Myprofile = (props) => {
     console.log(props);
@@ -81,7 +82,64 @@ const Myprofile = (props) => {
         })
     }
     const resetHandler=()=>{
-        setmydetails(props.userdetails);
+        setmydetails(props.profiledetails);
+    }
+    let form =null;
+    console.log(props);
+    if(props.loading===false && props.profiledetails!==null){
+        console.log('userdetails._id',userdetails._id);
+        let a=userdetails._id;
+        let b=props.profiledetails._id;
+        console.log('props.profiledetails._id',props.profiledetails._id);
+        if(a===b){
+        form=(
+            <form onSubmit={saveDetailHandler}>
+            <div className="row mb-4">
+                <div className="form-group col-md-4">
+                    <label htmlFor="inputfirstname">First Name</label>
+                    {console.log(mydetails.firstName)}
+                    <input type="text" className="form-control py-3" id="inputfirstname" placeholder="First Name" value={mydetails.firstName}  onChange={e=>inputChangeHandler(e,'firstName')} ></input>
+                </div>
+                <div className="form-group col-md-4">
+                    <label htmlFor="inputlastname">Last Name</label>
+                    <input type="text" className="form-control py-3" id="inputlastname" placeholder="Last Name" value={mydetails.lastName} onChange={e=>inputChangeHandler(e,'lastName')}  ></input>
+                </div>
+            </div>
+            <div className="row mb-4">
+                <div className="form-group col-md-4">
+                    <label htmlFor="inputdob">DOB</label>
+                    <input type="text" className="form-control py-3" id="inputdob" placeholder="DD/MM/YY" value={mydetails.dob} onChange={e=>inputChangeHandler(e,'dob')}></input>
+                </div>
+                <div className="form-group col-md-4">
+                    <label htmlFor="inputPassword4">Gender</label><br></br>
+                    <input type="radio" className="btn-check" name="options-outlined" id="success-outlined-1" autoComplete="off" checked={mydetails.gender==="male"} onChange={e=>inputChangeHandler(e,'checkboxone')} ></input>
+                    <label className="btn btn-outline-primary col-5 py-3" htmlFor="success-outlined-1" style={{ marginRight: '10px' }} >Male</label>
+                    <input type="radio" className="btn-check" name="options-outlined" id="success-outlined-2" autoComplete="off" checked={mydetails.gender==="female"} onChange={e=>inputChangeHandler(e,'checkboxtwo')} ></input>
+                    <label className="btn btn-outline-primary col-5 py-3" htmlFor="success-outlined-2">Female</label>
+
+
+                </div>
+            </div>
+            <div className="row mb-4">
+                <div className="form-group col-md-4">
+                    <label htmlFor="inputCity">City</label>
+                    <input type="text" className="form-control py-3" id="inputCity" value={mydetails.city} onChange={e=>inputChangeHandler(e,'city')}></input>
+                </div>
+                <div className="form-group col-md-4">
+                    <label htmlFor="inputState">State</label>
+                    <input type="text" className="form-control py-3" id="inputState" value={mydetails.state} onChange={e=>inputChangeHandler(e,'state')}></input>
+                </div>
+            </div>
+            <button  className="btn btn-primary" style={{ marginRight: '10px' }}>Save </button>
+            <button type="button" className="btn border-primary" onClick={resetHandler} >Reset All</button>
+
+        </form>
+        )
+    }else{
+        //different component
+        //display other profile
+        <Otherprofile showDetails={mydetails}></Otherprofile>
+        }
     }
 
 
@@ -103,48 +161,8 @@ const Myprofile = (props) => {
                 <h2>Tarun Jolly</h2>
             </div>
             <div className={classes.form_container}>
-                {/* {form} */}
-                <form onSubmit={saveDetailHandler}>
-                    <div className="row mb-4">
-                        <div className="form-group col-md-4">
-                            <label htmlFor="inputfirstname">First Name</label>
-                            {console.log(mydetails.firstName)}
-                            <input type="text" className="form-control py-3" id="inputfirstname" placeholder="First Name" value={mydetails.firstName}  onChange={e=>inputChangeHandler(e,'firstName')} ></input>
-                        </div>
-                        <div className="form-group col-md-4">
-                            <label htmlFor="inputlastname">Last Name</label>
-                            <input type="text" className="form-control py-3" id="inputlastname" placeholder="Last Name" value={mydetails.lastName} onChange={e=>inputChangeHandler(e,'lastName')}  ></input>
-                        </div>
-                    </div>
-                    <div className="row mb-4">
-                        <div className="form-group col-md-4">
-                            <label htmlFor="inputdob">DOB</label>
-                            <input type="text" className="form-control py-3" id="inputdob" placeholder="DD/MM/YY" value={mydetails.dob} onChange={e=>inputChangeHandler(e,'dob')}></input>
-                        </div>
-                        <div className="form-group col-md-4">
-                            <label htmlFor="inputPassword4">Gender</label><br></br>
-                            <input type="radio" className="btn-check" name="options-outlined" id="success-outlined-1" autoComplete="off" checked={mydetails.gender==="male"} onChange={e=>inputChangeHandler(e,'checkboxone')} ></input>
-                            <label className="btn btn-outline-primary col-5 py-3" htmlFor="success-outlined-1" style={{ marginRight: '10px' }} >Male</label>
-                            <input type="radio" className="btn-check" name="options-outlined" id="success-outlined-2" autoComplete="off" checked={mydetails.gender==="female"} onChange={e=>inputChangeHandler(e,'checkboxtwo')} ></input>
-                            <label className="btn btn-outline-primary col-5 py-3" htmlFor="success-outlined-2">Female</label>
-
-
-                        </div>
-                    </div>
-                    <div className="row mb-4">
-                        <div className="form-group col-md-4">
-                            <label htmlFor="inputCity">City</label>
-                            <input type="text" className="form-control py-3" id="inputCity" value={mydetails.city} onChange={e=>inputChangeHandler(e,'city')}></input>
-                        </div>
-                        <div className="form-group col-md-4">
-                            <label htmlFor="inputState">State</label>
-                            <input type="text" className="form-control py-3" id="inputState" value={mydetails.state} onChange={e=>inputChangeHandler(e,'state')}></input>
-                        </div>
-                    </div>
-                    <button  className="btn btn-primary" style={{ marginRight: '10px' }}>Save </button>
-                    <button type="button" className="btn border-primary" onClick={resetHandler} >Reset All</button>
-
-                </form>
+                {form}
+               
             </div>
 
 
@@ -155,7 +173,7 @@ const Myprofile = (props) => {
 const mapStateToProps = (state) => {
     return {
         userdetails: state.auth.userDetails,
-        loading: state.auth.loading,
+        loading: state.profile.loading,
         profiledetails:state.profile.profileDetails
     }
 }

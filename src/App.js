@@ -6,7 +6,7 @@ import LoginPage from './components/loginpage/loginpage';
 import Profile from './components/profilepage/profile'
 import "bootstrap/dist/css/bootstrap.min.css";
 import { connect } from 'react-redux';
-import * as actions from './store/action/auth';
+import * as actions from './store/action/index';
 import { useEffect } from 'react';
 import Logout from './components/loginpage/logout/logout';
 import Home from './components/Home/Home';
@@ -26,7 +26,6 @@ axios.interceptors.request.use(config => {
 
 function App(props) {
 
-  // const x=document.cookie
   let { settoken,getUserDetails } = props;
   useEffect(() => {
     settoken();
@@ -34,7 +33,6 @@ function App(props) {
   }, [settoken,getUserDetails])
   let routes = (
     <Switch>
-      {/* <Route path='/profile' component={Profile}></Route> */}
       <Route exact path='/' component={LoginPage}></Route>
       <Redirect to="/"></Redirect>
     </Switch>

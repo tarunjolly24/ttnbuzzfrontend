@@ -5,7 +5,7 @@ import axios from 'axios';
 
 const Suggestions = (props) => {
    const [inputShow,setinputshow]= useState(false);
-   const [suggestions,setsuggestion]=useState(null);
+   const [suggestions,setsuggestion]=useState([]);
    const inputHandler=()=>{
         setinputshow(!inputShow);
    }
@@ -13,7 +13,9 @@ const Suggestions = (props) => {
        axios.get("http://localhost:5000/friends/suggestions")
        .then((response)=>{
            console.log(response.data);
-           setsuggestion(response.data);
+           
+            if(Object.keys(response.data).length!==0)
+                setsuggestion(response.data);
        })
    },[])
    let suggest=null;

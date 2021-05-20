@@ -4,11 +4,24 @@ import * as actiontypes from './actiontypes';
 export const settoken=function(){
     console.log('settoken called');
     console.log(localStorage.getItem('token'))
-    if(localStorage.getItem('token')==='' || localStorage.getItem('token')===null){
-        localStorage.setItem('token',document.cookie.split('=')[1]);
+    console.log(document.cookie);
+    
+
+    // console.log(document.cookie.split('=')[1]);
+    // let t0=performance.now()
+    // for(let i=0;i<1000000000;i++){
+    // }
+    // let t1=performance.now();
+    // console.log((t1-t0)/60);
+    // let token=document.cookie.split('=')[1];
+    if(localStorage.getItem('token')===null || localStorage.getItem('token')===''){
+        console.log(document.cookie);
+        localStorage.setItem('token',document.cookie);
     }
-    document.cookie='jwt='
-    // console.log(localStorage.getItem('token'))
+    document.cookie='jwt=';
+    console.log(localStorage.getItem('token'))
+    console.log(document.cookie)
+
     return{
         type:'SET_TOKEN',
         token:localStorage.getItem('token')===''?null:localStorage.getItem('token')
@@ -48,6 +61,7 @@ export const getUserDetails=function(){
                 _id:res.data._id,
                 firstName:res.data.firstName,
                 lastName:res.data.lastName,
+                about:res.data.about===undefined?'':res.data.about ,
                 dob:res.data.dob===undefined?'':res.data.dob,
                 gender:res.data.gender===undefined?'':res.data.gender,
                 city:res.data.city===undefined?'':res.data.city,

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import classes from './navbar.module.css';
-
+import {connect} from 'react-redux';
 const Navbar=(props)=>{
    
     return(
@@ -14,7 +14,7 @@ const Navbar=(props)=>{
                 
                 <div className="col-6">
                     <div className={classes.navbar_right_side}>
-                    <Link to="/profile/609af8556e7ed973e497d5b7"className={classes.link_user}  ><img className={classes.user_image} src="./images/user.jpeg" alt="user"></img> <span >Tarun Jolly</span> </Link>
+                    <Link to={`/profile/${props.profileId}`} className={classes.link_user}  ><img className={classes.user_image} src="./images/user.jpeg" alt="user"></img> <span >Tarun Jolly</span> </Link>
                     <Link to="/logout">Logout</Link>
                     <span className={classes.chat_icon}><i className="fab fa-facebook-messenger"></i></span>
                     <span className={classes.user_icon} ><i className="fas fa-user-check"></i></span>
@@ -29,4 +29,10 @@ const Navbar=(props)=>{
 
 }
 
-export default Navbar;
+const mapStateToProps=(state)=>{
+    return{
+        profileId:state.auth.profileId,
+    }
+}
+
+export default  connect(mapStateToProps)(Navbar);

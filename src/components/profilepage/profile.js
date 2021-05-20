@@ -5,7 +5,6 @@ import Suggestions from '../suggestions/suggestion';
 import classes from './profile.module.css';
 import Myprofile from './myprofile/myprofile';
 import { useEffect } from 'react';
-import * as actions from '../../store/action/auth';
 import { connect } from 'react-redux';
 const Profile = (props) => {
     // console.log(props.userdetails);
