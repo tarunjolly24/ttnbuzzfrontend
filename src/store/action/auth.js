@@ -14,7 +14,7 @@ export const settoken=function(){
     // let t1=performance.now();
     // console.log((t1-t0)/60);
     // let token=document.cookie.split('=')[1];
-    if(localStorage.getItem('token')===null || localStorage.getItem('token')==='' ){
+    if(localStorage.getItem('token')===null || localStorage.getItem('token')==='' || localStorage.getItem('token')==='jwt='){
         console.log(document.cookie);
         localStorage.setItem('token',document.cookie);
     }
@@ -29,7 +29,7 @@ export const settoken=function(){
     
     return{
         type:'SET_TOKEN',
-        token:localStorage.getItem('token')===''?null:localStorage.getItem('token')
+        token:(localStorage.getItem('token')==='' || localStorage.getItem('token')==='jwt=')?null:localStorage.getItem('token')
     }  
 }
 
