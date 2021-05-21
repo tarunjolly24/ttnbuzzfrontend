@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import classes from './navbar.module.css';
 import { connect } from 'react-redux';
+import RequestList from '../RequestList/requestList';
 const Navbar = (props) => {
-
+    const [showList,setShowList]=useState(false);
+    const showListHandler=()=>{
+        setShowList(!showList);
+    }
+    let requestlist=null;
+    if(showList){
+        requestlist=<RequestList></RequestList>
+    }
     return (
         <React.Fragment>
             <div className={classes.navbar_container}>
@@ -18,7 +26,9 @@ const Navbar = (props) => {
                                 <Link to={`/profile/${props.profileId}`} className={classes.link_user}  ><img className={classes.user_image} src={props.userDetails===null?'https://res.cloudinary.com/ddcgdnhqp/image/upload/v1621531829/uxz2n8ntfpk2typowdig.jpg':props.userDetails.profileImage} alt="user"></img> <span >{props.userDetails===null?"user name":props.userDetails.firstName+" "+props.userDetails.lastName}</span> </Link>
                                 <Link to="/logout">Logout</Link>
                                 <span className={classes.chat_icon}><i className="fab fa-facebook-messenger"></i></span>
-                                <span className={classes.user_icon} ><i className="fas fa-user-check"></i></span>
+                                <span className={classes.user_icon} onClick={showListHandler} ><i className="fas fa-user-check"></i>
+                                </span>
+                                {requestlist}
                             </div>
                         </div>
 

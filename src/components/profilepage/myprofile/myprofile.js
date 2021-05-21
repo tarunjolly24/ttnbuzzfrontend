@@ -22,6 +22,9 @@ const Myprofile = (props) => {
         state: '',
         profileImage: '',
         coverImage: '',
+        friendsList:[],
+        requestList:[],
+        requestSent:[],
     });
     
     // console.log(mydetails);
@@ -109,6 +112,8 @@ const Myprofile = (props) => {
 
 
     }
+    let addImage=null;
+
     let form =null;
     console.log(props);
     if(props.loading===false && props.profiledetails!==null){
@@ -116,7 +121,14 @@ const Myprofile = (props) => {
         let a=userdetails._id;
         let b=props.profiledetails._id;
         console.log('props.profiledetails._id',props.profiledetails._id);
+        console.log(a===b)
         if(a===b){
+            addImage=(
+                <form className={classes.input_image}>
+                        <label htmlFor="files" className="btn"><i className="fas  fa-camera fa-2x"></i></label>
+                        <input id="files" style={{ visibility: 'hidden' }} onChange={(e)=>imageChangeHandler(e)} type="file"></input>
+                    </form>
+            )
         form=(
             <form onSubmit={saveDetailHandler}>
             <div className="row mb-4">
@@ -160,12 +172,14 @@ const Myprofile = (props) => {
 
         </form>
         )
-    }else{
+    }else if(a!==b){
         //different component
         //display other profile
-        <Otherprofile showDetails={mydetails}></Otherprofile>
+        console.log("other compoent")
+       form=<Otherprofile showDetails={mydetails}></Otherprofile>
         }
     }
+
 
 
     return (
@@ -176,10 +190,7 @@ const Myprofile = (props) => {
                 </div>
                 <div className={classes.profile_img_con}>
                     <img className={classes.profile_img} src={mydetails.profileImage===''?'https://res.cloudinary.com/ddcgdnhqp/image/upload/v1621521549/pv5ujsrzwgqqdfh3hcv1.jpg':mydetails.profileImage} alt="profile"></img>
-                    <form className={classes.input_image}>
-                        <label htmlFor="files" className="btn"><i className="fas  fa-camera fa-2x"></i></label>
-                        <input id="files" style={{ visibility: 'hidden' }} onChange={(e)=>imageChangeHandler(e)} type="file"></input>
-                    </form>
+                    {addImage}
                 </div>
             </div>
             <div className={classes.user_name}>

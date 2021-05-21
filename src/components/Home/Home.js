@@ -7,7 +7,10 @@ import Recent from '../recent/recent';
 import Displaycard from '../Displaycard/displaycard';
 import Allfeed from '../feed/allfeed';
 import classes from './Home.module.css';
+import { connect } from 'react-redux';
 const Home = (props) => {
+    
+
     return (
         <React.Fragment>
             <div className={classes.home_container}>
@@ -23,6 +26,7 @@ const Home = (props) => {
                         <div className="col-6">
                             <Search></Search>
                             <div style={{margin:'21px'}} >Sort by <strong>Top</strong><i className="fas fa-sort-down"></i></div>
+                            <div>Moderator</div>
                             <Allfeed></Allfeed>
 
                         </div>
@@ -47,5 +51,10 @@ const Home = (props) => {
     )
 
 }
+const mapStateToProps=(state)=>{
+    return{
+        userDetails:state.auth.userDetails
+    }
+}
 
-export default Home;
+export default  connect(mapStateToProps)(Home);

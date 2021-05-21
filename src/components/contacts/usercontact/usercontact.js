@@ -5,7 +5,7 @@ const UserContact = (props) => {
 
     return (
         <div className={classes.usersuggestioncontainer}>
-            <Link to="" className={classes.link_user}><img className={classes.user_image} src="./images/user.jpeg" alt="user"></img> <span >Tarun Jolly</span> </Link>
+            <Link to={`/profile/${props.user._id}`} className={classes.link_user}><img className={classes.user_image} src={props.user.profileImage} alt="user"></img> <span >{props.user.firstName+" "+props.user.lastName}</span> </Link>
         </div>
     )
 

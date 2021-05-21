@@ -1,18 +1,19 @@
 import classes from './displaycard.module.css';
 import React from 'react';
+import { connect } from 'react-redux';
 
 const Displaycard=(props)=>{
     return(
         <React.Fragment>
             <div className={classes.display_container}>
                 <div className={classes.cover_con} >
-                    <img  src="./images/cover.jpg" alt="cover"></img>
+                    <img  src={props.userDetails!=null?props.userDetails.coverImage:''} alt="cover"></img>
                 </div>
                 <div className={classes.profile_con}>
-                    <img src="./images/user.jpeg" alt="user"></img>
+                    <img src={props.userDetails!=null?props.userDetails.profileImage:''} alt="user"></img>
                 </div>
                 <div className={classes.text_con}>
-                    <h5>Shekhar Agarwal</h5>
+                    <h5>{props.userDetails!==null?props.userDetails.firstName +" "+props.userDetails.lastName:''}</h5>
                     <p>Newly Recruit at TTN</p>
                     
                 </div>
@@ -33,4 +34,10 @@ const Displaycard=(props)=>{
 
 }
 
-export default Displaycard;
+const mapStateToProps=(state)=>{
+    return{
+        userDetails:state.auth.userDetails
+    }
+}
+
+export default connect(mapStateToProps)(Displaycard);

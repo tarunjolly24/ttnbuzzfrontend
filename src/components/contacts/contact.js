@@ -10,6 +10,7 @@ const Contact = (props) => {
         setinputshow(!inputShow);
    }
    useEffect(()=>{
+       console.log('get all friends')
        axios.get("http://localhost:5000/friends/getallfriends")
        .then((response)=>{
            console.log(response.data);
@@ -20,7 +21,7 @@ const Contact = (props) => {
    let suggest=null;
    if(suggestions!=null){
        suggest=suggestions.map((item)=>{
-           return <Usercontact></Usercontact>
+           return <Usercontact user={item}></Usercontact>
        })
    }
 
