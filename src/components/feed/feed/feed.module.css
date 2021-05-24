@@ -1,6 +1,6 @@
 .feed_container{
     /* text-align: center; */
-    color:#bbbbbb;
+    color:#5a5a5a;
     padding: 20px;
     margin: 20px;
     margin-bottom: 40px;
@@ -58,9 +58,11 @@ input:focus, textarea:focus, select:focus{
     width: auto;
 }
 
+
 .post_image img{
     width: 100%;
     border-radius: 15px;
+    height: 350px;
 }
 
 hr{
@@ -131,8 +133,8 @@ hr{
 }
 
 .flex_item_two{
-    background-color:#F2F2F2;   
-    color:#6E747C;
+    /* background-color:#F2F2F2;    */
+    /* color:#6E747C; */
     text-align: center;
     font-size: 18px;
     padding:10px 10px;
@@ -140,3 +142,34 @@ hr{
     border-radius: 50%; 
 }
 
+.spanone{
+    color:#40C06D;
+    background-color:#F2F2F2;
+    margin-right: 10px;
+    padding:8px 10px;
+    border-radius:50% ;
+    border: none;
+}
+
+.spantwo{
+    color:#C72323;
+    border-radius:50% ;
+    border: none;
+
+    background-color:#F2F2F2;
+    padding:8px 10px;
+    margin-right: 10px;
+
+}
+
+.spanthree{
+    border-radius:50% ;
+    padding: 8px 10px;
+    background-color:#F2F2F2;
+    border: none;
+
+}
+
+.islikedpost{
+    color:green;
+}

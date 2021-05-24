@@ -28,7 +28,7 @@
     border-radius: 25px;
     background-color: #F0F2F5;
     border:none;
-    width: 400px;
+    width: 300px;
     margin:0px 15px;
 }
 input:focus, textarea:focus, select:focus{
@@ -53,3 +53,12 @@ input:focus, textarea:focus, select:focus{
     color:#80858C;
 }
 
+.submitBtn{
+    /* padding: 5px; */
+    padding:  5px 10px;
+    border:none;
+    border-radius: 50%;
+    color:white;
+    background-color:#2196F3;
+
+}

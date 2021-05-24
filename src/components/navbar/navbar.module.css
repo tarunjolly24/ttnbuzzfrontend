@@ -4,9 +4,6 @@
 
 }
 
-.navbar_container{
-
-}
 
 .user_image{
     height: 40px;
@@ -35,4 +32,33 @@
     float: right;
     padding:8px 0px;    
     
+}
+
+.display_container{
+    z-index: 2;
+    text-align: center;
+    padding: 10px;
+    background-color: #fff;
+    position: absolute;
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    
+}
+.display_container a{
+    padding: 10px 20px;
+    margin-bottom:10px ;
+    color: #fff;
+    border-radius: 20px;
+    text-decoration: none;
+    background-color: #2196F3;
+}
+
+.display_container_visible{
+    display:block;
+}
+
+.showbtn{
+    border: none;
+    background: none;
 }

@@ -8,6 +8,17 @@ export {
 //     fetchOrders
 // }from './post';
 
+export{
+    createPost,
+    getPost,
+} from './post';
+ 
+
+export{
+    createComment,
+    getComment,
+} from './comment';
+ 
 
 export {
     settoken,

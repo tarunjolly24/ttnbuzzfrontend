@@ -34,7 +34,8 @@ export const getPost=()=>{
             console.log(response.data);
             dispatch(getpostsuccess(response.data));
         })
-        .catch(()=>{
+        .catch((err)=>{
+            console.log(err);
             dispatch(getpostfailure());
         })
     }
@@ -62,23 +63,25 @@ export const createpostfailure=()=>{
 export const createpostsuccess=(data)=>{
     return{
         type:actiontypes.CREATE_POST_SUCCESS,
+        payload:data
     }
 }
 
-export const createPost=(data)=>{
+export const createPost=(formdata)=>{
     return (dispatch)=>{
-        dispatch(getpoststart());
-        axios.post('http://localhost:5000/post/createpost',{data:data},{
+        dispatch(createpoststart());
+        axios.post('http://localhost:5000/post/createpost',formdata,{
             headers: {
+                'Accept': 'application/json',
                 'Content-Type': 'multipart/form-data'
               }
         })
         .then((response)=>{
             console.log(response.data);
-            dispatch(getpostsuccess(response.data));
+            dispatch(createpostsuccess(response.data));
         })
         .catch(()=>{
-            dispatch(getpostfailure());
+            dispatch(createpostfailure());
         })
     }
 

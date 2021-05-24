@@ -76,6 +76,7 @@ export const getUserDetails=function(){
                 friendsList:res.data.friendsList,
                 requestList:res.data.requestList,
                 requestSent:res.data.requestSent,
+                role:res.data.role
             }
             dispatch(getUserDetailsSuccess(obj));
         })

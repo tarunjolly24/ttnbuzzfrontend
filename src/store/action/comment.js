@@ -69,16 +69,14 @@ export const createComment=(data)=>{
     return (dispatch)=>{
         dispatch(getcommentstart());
         axios.post('http://localhost:5000/comment/createcomment',{data:data},{
-            headers: {
-                'Content-Type': 'multipart/form-data'
-              }
+           
         })
         .then((response)=>{
             console.log(response.data);
-            dispatch(getcommentsuccess(response.data));
+            dispatch(createcommentsuccess(response.data));
         })
         .catch(()=>{
-            dispatch(getcommentfailure());
+            dispatch(createcommentfailure());
         })
     }
 

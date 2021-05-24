@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../navbar/navbar';
 import Contact from '../contacts/contact';
 import Suggestions from '../suggestions/suggestion';
@@ -8,14 +8,58 @@ import Displaycard from '../Displaycard/displaycard';
 import Allfeed from '../feed/allfeed';
 import classes from './Home.module.css';
 import { connect } from 'react-redux';
+import * as action from '../../store/action/index';
+import axios from 'axios';
 const Home = (props) => {
-    
+    const [feed, setfeed] = useState([]);
+    const [flagged, setflagged] = useState(false);
+    console.log(props);
+    useEffect(() => {
+        props.ongetPost();
+        props.ongetComment();
+    }, [])
+    let moderator = null;
+    const moderatorviewHandler = () => {
+        console.log(flagged);
+
+        setflagged(!flagged);
+        if (flagged == false) {
+
+            axios.get('http://localhost:5000/post/getflagpost')
+                .then((res) => {
+                    console.log(res.data);
+                    setfeed(res.data);
+                })
+
+        } else {
+            setfeed(props.allpost);
+        }
+    }
+    const { allpost } = props;
+    useEffect(() => {
+        setfeed(allpost);
+
+    }, [allpost])
+    if (props.userDetails !== null) {
+
+        if (props.userDetails.role == 'admin') {
+
+            moderator = (
+                <div>
+                    <label className={classes.switch}>
+                        <input type="checkbox" checked={flagged} onChange={moderatorviewHandler} ></input>
+                        <span className={[classes.slider, classes.round].join(' ')}>Moderator Only</span>
+                    </label>
+                </div>
+            )
+        }
+    }
 
     return (
         <React.Fragment>
             <div className={classes.home_container}>
                 <Navbar></Navbar>
-                <div className="container-fluid" style={{padding:'40px'}} >
+                <div className="container-fluid" style={{ padding: '40px' }} >
                     <div className="row">
                         <div className="col-3">
                             <Displaycard></Displaycard>
@@ -25,9 +69,15 @@ const Home = (props) => {
 
                         <div className="col-6">
                             <Search></Search>
-                            <div style={{margin:'21px'}} >Sort by <strong>Top</strong><i className="fas fa-sort-down"></i></div>
-                            <div>Moderator</div>
-                            <Allfeed></Allfeed>
+                            <div className={classes.blabla}>
+                                <div>Sort by <strong>Top</strong><i className="fas fa-sort-down"></i></div>
+                                <div>
+                                    {moderator}
+                                </div>
+
+
+                            </div>
+                            <Allfeed profileId={props.profileId} flagged={flagged} allcomment={props.allcomment} allpost={feed.length > 0 ? feed : []} role={props.userDetails != null ? props.userDetails.role : ''}></Allfeed>
 
                         </div>
 
@@ -51,10 +101,21 @@ const Home = (props) => {
     )
 
 }
-const mapStateToProps=(state)=>{
-    return{
-        userDetails:state.auth.userDetails
+const mapStateToProps = (state) => {
+    return {
+        userDetails: state.auth.userDetails,
+        allpost: state.post.posts,
+        allcomment:state.comment.comments,
+        profileId:state.auth.profileId
+
     }
 }
 
-export default  connect(mapStateToProps)(Home);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        ongetPost: () => dispatch(action.getPost()),
+        ongetComment:()=>dispatch(action.getComment()),
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

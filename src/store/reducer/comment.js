@@ -1,7 +1,7 @@
 
 import * as actionTypes from '../action/actiontypes';
 const initailState={
-    comments:[],
+    comments:null,
     error:null,
     loading:false,
     createdcomment:null,

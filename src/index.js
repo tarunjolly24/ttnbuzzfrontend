@@ -9,12 +9,14 @@ import {createStore,applyMiddleware,compose,combineReducers} from 'redux';
 import authReducer from './store/reducer/auth';
 import postReducer from './store/reducer/post';
 import profileReducer from './store/reducer/profile';
+import commentReducer from './store/reducer/comment'
 import thunk from 'redux-thunk';
 const composeEnhancers = process.env.NODE_ENV==='development'?window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ :null|| compose;
 const rootReduer=combineReducers({
   post:postReducer,
   auth:authReducer,
   profile:profileReducer,
+  comment:commentReducer
 });
 const store=createStore(rootReduer,
   composeEnhancers(applyMiddleware(thunk))

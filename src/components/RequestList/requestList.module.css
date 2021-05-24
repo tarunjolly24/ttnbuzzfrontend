@@ -1,0 +1,9 @@
+.friendlist_container{
+    position:absolute;
+    z-index:1;
+    right:0px;
+    text-align:center;
+    background-color: #fff;
+    box-shadow: 0 1px 12px 8px rgba(0, 0, 0, 0.1);
+
+}

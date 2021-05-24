@@ -91,7 +91,7 @@ const Myprofile = (props) => {
         // e.preventDefault();
         
         const files=Array.from(e.target.files);
-        // console.log(e.target.files[0]);
+        console.log(e.target.files[0]);
         console.log(files);
         const formdata = new FormData()
         const types = ['image/png', 'image/jpeg', 'image/gif']
@@ -99,9 +99,13 @@ const Myprofile = (props) => {
         files.forEach((file, i) => {
       formdata.append(i, file)
     })
+    // console.log(typeof formdata)
+    // formdata.append("text","dfhgsdjf");
+    // console.log(formdata);
         console.log(formdata);
-        axios.post('http://localhost:5000/image-upload',formdata, {
+        axios.post('http://localhost:5000/profile/image-upload',formdata, {
             headers: {
+                'Accept': 'application/json',
               'Content-Type': 'multipart/form-data'
             }
         })

@@ -49,7 +49,7 @@ const RequestList=(props)=>{
 
     return(
         <React.Fragment>
-            <div style={{position:'absolute',zIndex:'1'}}>
+            <div className={classes.friendlist_container}>
                 {requestlistcomponent}
             </div>
         </React.Fragment>
