@@ -33,11 +33,13 @@ const Search = (props) => {
         if(newpost.file!==null){
             formdata.append('image',newpost.file);
         }
+        if(newpost.description!=='' || newpost.file!==null )
+        props.oncreatePost(formdata);
+        
         setnewpost({
-            description:'',
+        description:'',
             file:null,
         })
-        props.oncreatePost(formdata);
 
         // axios.post('http://localhost:5000/post/createpost',formdata,{
         //     headers: {

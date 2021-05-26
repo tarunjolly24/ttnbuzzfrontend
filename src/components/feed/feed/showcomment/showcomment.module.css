@@ -1,0 +1,29 @@
+.usercommentprofileimg{
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    /* margin-left:20px; */
+
+}
+
+.flex_con{
+    display: flex;
+    /* justify-content: center; */
+    margin: 10px;   
+    width: 550px;
+   
+}
+
+.flex_one{
+    padding: 10px;
+}
+.flex_two{
+    border-radius: 50px;
+
+    padding:10px 20px;
+    background-color: #F0F2F5;
+    width: 80%;
+    display: flex;
+    overflow-wrap: break-word;
+    flex-direction: column;
+}

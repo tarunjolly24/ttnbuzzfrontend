@@ -27,9 +27,11 @@ export const getpostsuccess=(data)=>{
 }
 
 export const getPost=()=>{
+//    debugger
     return (dispatch)=>{
         dispatch(getpoststart());
-        axios.get('http://localhost:5000/post/getallpost')
+        // console.log(page);
+        axios.get(`http://localhost:5000/post/getallpost`)
         .then((response)=>{
             console.log(response.data);
             dispatch(getpostsuccess(response.data));
@@ -69,6 +71,7 @@ export const createpostsuccess=(data)=>{
 
 export const createPost=(formdata)=>{
     return (dispatch)=>{
+        console.log('dispatch post')
         dispatch(createpoststart());
         axios.post('http://localhost:5000/post/createpost',formdata,{
             headers: {

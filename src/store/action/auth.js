@@ -7,13 +7,6 @@ export const settoken=function(){
     console.log(document.cookie);
     
 
-    // console.log(document.cookie.split('=')[1]);
-    // let t0=performance.now()
-    // for(let i=0;i<1000000000;i++){
-    // }
-    // let t1=performance.now();
-    // console.log((t1-t0)/60);
-    // let token=document.cookie.split('=')[1];
     if(localStorage.getItem('token')===null || localStorage.getItem('token')==='' || localStorage.getItem('token')==='jwt='){
         console.log(document.cookie);
         localStorage.setItem('token',document.cookie);

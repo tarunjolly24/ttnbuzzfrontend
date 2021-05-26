@@ -11,35 +11,35 @@ import { connect } from 'react-redux';
 import * as action from '../../store/action/index';
 import axios from 'axios';
 const Home = (props) => {
-    const [feed, setfeed] = useState([]);
+    // const [feed, setfeed] = useState([]);
     const [flagged, setflagged] = useState(false);
     console.log(props);
-    useEffect(() => {
-        props.ongetPost();
-        props.ongetComment();
-    }, [])
+    // useEffect(() => {
+    //     props.ongetPost();
+    //     props.ongetComment();
+    // }, [])
     let moderator = null;
     const moderatorviewHandler = () => {
         console.log(flagged);
 
         setflagged(!flagged);
-        if (flagged == false) {
+        // if (flagged == false) {
 
-            axios.get('http://localhost:5000/post/getflagpost')
-                .then((res) => {
-                    console.log(res.data);
-                    setfeed(res.data);
-                })
+        //     axios.get('http://localhost:5000/post/getflagpost')
+        //         .then((res) => {
+        //             console.log(res.data);
+        //             setfeed(res.data);
+        //         })
 
-        } else {
-            setfeed(props.allpost);
-        }
+        // } else {
+        //     setfeed(props.allpost);
+        // }
     }
-    const { allpost } = props;
-    useEffect(() => {
-        setfeed(allpost);
+    // const { allpost } = props;
+    // useEffect(() => {
+    //     setfeed(allpost);
 
-    }, [allpost])
+    // }, [allpost])
     if (props.userDetails !== null) {
 
         if (props.userDetails.role == 'admin') {
@@ -77,7 +77,9 @@ const Home = (props) => {
 
 
                             </div>
-                            <Allfeed profileId={props.profileId} flagged={flagged} allcomment={props.allcomment} allpost={feed.length > 0 ? feed : []} role={props.userDetails != null ? props.userDetails.role : ''}></Allfeed>
+                            
+                            {/* allcomment={props.allcomment} allpost={feed.length > 0 ? feed : []} */}
+                            <Allfeed profileId={props.profileId} flagged={flagged}  role={props.userDetails != null ? props.userDetails.role : ''}></Allfeed>
 
                         </div>
 
@@ -104,18 +106,12 @@ const Home = (props) => {
 const mapStateToProps = (state) => {
     return {
         userDetails: state.auth.userDetails,
-        allpost: state.post.posts,
-        allcomment:state.comment.comments,
+        // allpost: state.post.posts,
+        // allcomment:state.comment.comments,
         profileId:state.auth.profileId
 
     }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        ongetPost: () => dispatch(action.getPost()),
-        ongetComment:()=>dispatch(action.getComment()),
-    }
-}
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home);
+export default connect(mapStateToProps)(Home);

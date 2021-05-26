@@ -94,6 +94,9 @@ hr{
 .flex2_item_one{
     display: flex;
 }
+.flex2_item_two{
+    cursor: pointer;
+}
 
 .btn_container{
     display: flex;
@@ -132,13 +135,14 @@ hr{
     margin: 0 10px;
 }
 
+
 .flex_item_two{
     /* background-color:#F2F2F2;    */
     /* color:#6E747C; */
     text-align: center;
     font-size: 18px;
-    padding:10px 10px;
-    margin:0 10px;
+    /* padding:10px 10px; */
+    /* margin:0 10px; */
     border-radius: 50%; 
 }
 
@@ -172,4 +176,18 @@ hr{
 
 .islikedpost{
     color:green;
+}
+
+
+
+.reportdiv{
+    position: absolute;
+    padding: 20px;
+    background-color: #F2F2F2;
+    border-radius: 12px;
+}
+
+.reportdiv i{
+    color: #C72323;
+    margin-right: 10px;
 }

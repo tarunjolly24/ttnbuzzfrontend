@@ -38,7 +38,7 @@ const Addcomment = (props) => {
             </div>
             <div className={classes.flex_con_two}>
                 <input className={classes.search_bar} type="text" placeholder="Write a comment..." value={com.description} onChange={(e)=>commentHandler(e)}></input>
-            <button type="button" onClick={addHandler}>click me </button>
+            <button type="button" className={classes.addcommentbtn} onClick={addHandler}> <i class="fas fa-arrow-circle-right"></i> </button>
             </div>
         </div>
     )

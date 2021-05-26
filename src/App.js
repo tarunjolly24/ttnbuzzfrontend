@@ -31,25 +31,26 @@ function App(props) {
     settoken();
     getUserDetails();
   }, [settoken,getUserDetails])
-  let routes = (
+  const  unprotectedRoutes = (
     <Switch>
       <Route exact path='/' component={LoginPage}></Route>
       <Redirect to="/"></Redirect>
     </Switch>
   )
-  if (props.isAuthenticated) {
-    routes = (
+ 
+  const protectedRoutes = (
       <Switch>
         <Route path='/profile/:id' component={Profile}></Route>
         <Route path='/logout' component={Logout}></Route>
-        <Route path='/' component={Home}></Route>
+        <Route path='/feed' component={Home}></Route>
+        <Redirect to='/feed'></Redirect>
       </Switch>
     )
-  }
+  
 
   return (
     <div className="App">
-      {routes}
+      {props.isAuthenticated? protectedRoutes:unprotectedRoutes}
     </div>
   );
 }

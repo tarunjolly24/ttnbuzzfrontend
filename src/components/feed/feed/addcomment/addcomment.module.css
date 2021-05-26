@@ -10,11 +10,12 @@
 
 .search_bar{
     margin: 0 10px;
-    width:500px;
-    padding:5px 20px;
+    width:445px;
+    padding:10px 20px;
     border-radius: 25px;
     background-color: #F0F2F5;
     border:none;
+
 }
 input:focus, textarea:focus, select:focus{
     outline: none;
@@ -28,3 +29,11 @@ input:focus, textarea:focus, select:focus{
 
 }
 
+.addcommentbtn{
+    padding:  5px 10px;
+    border:none;
+    border-radius: 50%;
+    color:white;
+    background-color:#2196F3;
+
+}
