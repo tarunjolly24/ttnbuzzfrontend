@@ -31,6 +31,7 @@ function App(props) {
     settoken();
     getUserDetails();
   }, [settoken,getUserDetails])
+  
   const  unprotectedRoutes = (
     <Switch>
       <Route exact path='/' component={LoginPage}></Route>

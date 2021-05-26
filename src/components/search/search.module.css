@@ -34,9 +34,7 @@
 input:focus, textarea:focus, select:focus{
     outline: none;
 }
-.flex_con_two{
-    /* flex: 2; */
-}
+
 .flex_con_three{
     /* flex: 1; */
     margin-right:10px ;
