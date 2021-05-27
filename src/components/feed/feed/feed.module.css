@@ -146,6 +146,12 @@ hr{
     border-radius: 50%; 
 }
 
+.flex2_item_two button{
+    border: none;
+    background-color: #fff;
+    
+}
+
 .spanone{
     color:#40C06D;
     background-color:#F2F2F2;

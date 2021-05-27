@@ -3,10 +3,12 @@ import Feed from './feed/feed';
 import axios from 'axios';
 import { connect } from 'react-redux'
 import * as action from '../../store/action/index';
+import classes from './allfeed.module.css';
 const Allfeed = (props) => {
     const [feed, setfeed] = useState([]);
+    const [PageNumber,setPageNumber]=useState(0);
     useEffect(() => {
-        props.ongetPost();
+        props.ongetPost(0);
         props.ongetComment();
     }, [])
 
@@ -17,9 +19,18 @@ const Allfeed = (props) => {
         setfeed(updatedfeed);
     }
 
+    useEffect(()=>{
+        return ()=>{
+            console.log("all feed component unmount");
+            props.pagezeroaction();
+        
+        }
+    },[])
+    
     const { allpost } = props;
     useEffect(() => {
         setfeed(allpost);
+        // debugger
     }, [allpost])
 
     const { flagged } = props;
@@ -28,14 +39,40 @@ const Allfeed = (props) => {
         if (flagged === true) {
             axios.get('http://localhost:5000/post/getflagpost')
                 .then((res) => {
-                    // console.log(res.data);
+                    console.log(res.data);
+                    // setfeed([]);
                     setfeed(res.data);
+                    // debugger
                 })
         } else {
-            props.ongetPost();
+            // setfeed([]);
+            setfeed(props.allpost);
+            //action dispatch to set posts again in redux 
+            // debugger
+            
         }
     }, [flagged])
+    console.log(feed)
+    // debugger
+    const loadMoreHandler=()=>{
+        if(props.fetchMorePost){
+        setPageNumber(PageNumber+1);
+        props.ongetPost(PageNumber+1);
+        }
+    }
+    let loadmorepostbtn=null;
+    if(props.flagged==true){
+        loadmorepostbtn=null;
+    }else if(props.fetchMorePost===false){
+        loadmorepostbtn=(
+            <div style={{textAlign:'center'}} >All Post Are Loaded</div>
+        )
+    }else{
+        loadmorepostbtn=(
+            <div className={classes.divloadmorebutton} ><button onClick={loadMoreHandler} className={classes.loadmorebutton}> Load More post</button></div>
 
+        )
+    }
 
     let feedArray = null;
 
@@ -43,7 +80,7 @@ const Allfeed = (props) => {
 
         feedArray = feed.map((post) => {
             const arrayOfComment = props.allcomment.filter((eachcomment) => {
-                console.log("comparing ids of comment postid", eachcomment.postId === post._id)
+                // console.log("comparing ids of comment postid", eachcomment.postId === post._id)
                 return String(eachcomment.postId) === String(post._id)
             })
             let isLiked = false;
@@ -68,6 +105,7 @@ const Allfeed = (props) => {
     return (
         <div>
             {feedArray}
+            {loadmorepostbtn}
         </div>
     );
 
@@ -78,6 +116,7 @@ const mapStateToProps = (state) => {
 
         allpost: state.post.posts,
         allcomment: state.comment.comments,
+        fetchMorePost:state.post.fetchMorePost
 
 
     }
@@ -86,8 +125,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        ongetPost: () => dispatch(action.getPost()),
+        ongetPost: (page) => dispatch(action.getPost(page)),
         ongetComment: () => dispatch(action.getComment()),
+        pagezeroaction:()=>dispatch(action.pagezeroaction()),
     }
 }
 

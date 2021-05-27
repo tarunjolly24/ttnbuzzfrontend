@@ -4,31 +4,26 @@ import { Link } from 'react-router-dom'
 import Addcomment from './addcomment/addcomment';
 import Showcomment from './showcomment/showcomment';
 import axios from 'axios';
+import { connect } from 'react-redux';
+import * as action from '../../../store/action/index';
 const Feed = (props) => {
     const [likeon, setlikeon] = useState(false);
     const [dislikeon, setdislikeon] = useState(false);
-    const [isAddCommentVisible,setisAddCommentVisible]=useState(false);
-    const [isshowcomment,setisshowcomment]=useState(false);
-    const [isshowreport,setisshowreport]=useState(false);
+    const [isAddCommentVisible, setisAddCommentVisible] = useState(false);
+    const [isshowcomment, setisshowcomment] = useState(true);
+    const [isshowreport, setisshowreport] = useState(false);
 
-    const {isdisLiked,isLiked}=props;
+    const { isdisLiked, isLiked } = props;
     useEffect(() => {
         setdislikeon(isdisLiked);
         setlikeon(isLiked);
         // console.log("useEffect")
-    }, [isdisLiked,isLiked])
+    }, [isdisLiked, isLiked])
     const likeHandler = () => {
         if (likeon === false) {
-            axios.post('http://localhost:5000/post/likepost', { postId: props._id })
-                .then((res) => {
-                    // console.log(res);
-                })
-
-        }else{
-            axios.post('http://localhost:5000/post/unlikepost', { postId: props._id })
-                .then((res) => {
-                    // console.log(res);
-                })
+            props.likeaction(props._id,props.profileId);
+        } else {
+            props.unlikeaction(props._id,props.profileId);
         }
         setlikeon(!likeon);
         if (dislikeon === true) {
@@ -39,94 +34,90 @@ const Feed = (props) => {
     const dislikeHandler = () => {
         //axios request and setdislikeon
         if (dislikeon === false) {
-            axios.post('http://localhost:5000/post/dislikepost', { postId: props._id })
-                .then((res) => {
-                    // console.log(res);
-                })
 
-        }else{
-            axios.post('http://localhost:5000/post/undislikepost', { postId: props._id })
-                .then((res) => {
-                    // console.log(res);
-                })
+            props.dislikeaction(props._id,props.profileId);
+
+        } else {
+
+            props.undislikeaction(props._id,props.profileId);
         }
         setdislikeon(!dislikeon);
         if (likeon === true) {
             setlikeon(!likeon);
         }
     }
-    const commentHandler=()=>{
+    const commentHandler = () => {
         setisAddCommentVisible(!isAddCommentVisible);
     }
-    const ShowcommentHandler=()=>{
+    const ShowcommentHandler = () => {
         setisshowcomment(!isshowcomment);
     }
-    const showreportoptionHandler=()=>{
-        if(props.flagged===false)
-        setisshowreport(!isshowreport);
+    const showreportoptionHandler = () => {
+        if (props.flagged === false)
+            setisshowreport(!isshowreport);
     }
-    const reportPostHandler=(event,postId)=>{
+    const reportPostHandler = (event, postId) => {
         event.stopPropagation();//no use
 
-        axios.post('http://localhost:5000/post/flagpost',{postId:postId})
-        .then((res)=>{
-            console.log(res);
-            
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
+        axios.post('http://localhost:5000/post/flagpost', { postId: postId })
+            .then((res) => {
+                // console.log(res);
+
+            })
+            .catch((err) => {
+                // console.log(err);
+            })
         props.functionRemovePostFromStateOfFeed(postId);
 
     }
 
-    const unflagpostHandler=(postId)=>{
-        axios.post('http://localhost:5000/post/unflagpost',{postId:postId})
-        .then((res)=>{
-            console.log(res);
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
+    const unflagpostHandler = (postId) => {
+        axios.post('http://localhost:5000/post/unflagpost', { postId: postId })
+            .then((res) => {
+                // console.log(res);
+            })
+            .catch((err) => {
+                // console.log(err);
+            })
         props.functionRemovePostFromStateOfFeed(postId);
 
     }
 
-    const deletepostHandler=(postId)=>{
-        axios.post('http://localhost:5000/post/deletepost',{postId:postId})
-        .then((res)=>{
-            console.log(res);
-        })
-        .catch((err)=>{
-            console.log(err);
-        })
+    const deletepostHandler = (postId) => {
+        axios.post('http://localhost:5000/post/deletepost', { postId: postId })
+            .then((res) => {
+                // console.log(res);
+            })
+            .catch((err) => {
+                // console.log(err);
+            })
         props.functionRemovePostFromStateOfFeed(postId);
 
     }
 
-    let showcommentcomponent=null;
-    if(isshowcomment){
-        showcommentcomponent=(
+    let showcommentcomponent = null;
+    if (isshowcomment) {
+        showcommentcomponent = (
             <React.Fragment>
-            <Showcomment comment={props.arrayOfComment}></Showcomment>
+                <Showcomment postId={props._id} comment={props.arrayOfComment}></Showcomment>
             </React.Fragment>
         )
     }
 
-    let addcommentcomponent=null;
-    if(isAddCommentVisible){
-        addcommentcomponent=(
+    let addcommentcomponent = null;
+    if (isAddCommentVisible) {
+        addcommentcomponent = (
             <React.Fragment>
-            <Addcomment postid={props._id}></Addcomment>
+                <Addcomment postid={props._id}></Addcomment>
             </React.Fragment>
         )
     }
 
-    let showreportoption=null;
-    if(isshowreport &&  props.flagged !== true){
-        showreportoption=(
-            <div   onClick={(e)=>reportPostHandler(e,props._id)}  className={classes.reportdiv}>
-            <span><i class="fas fa-exclamation-circle"></i></span><span>Report</span>
+    let showreportoption = null;
+    if (isshowreport && props.flagged !== true) {
+        showreportoption = (
+            <div onClick={(e) => reportPostHandler(e, props._id)} className={classes.reportdiv}>
+                <span><i class="fas fa-exclamation-circle"></i></span><span>Report</span>
             </div>
         )
     }
@@ -136,8 +127,8 @@ const Feed = (props) => {
     if (props.role == 'admin' && props.flagged == true) {
         onlymoderator = (
             <React.Fragment>
-                <button className={classes.spanone} onClick={()=>unflagpostHandler(props._id)} ><i class="fas fa-check-circle"></i></button>
-                <button className={classes.spantwo} onClick={()=>deletepostHandler(props._id)} ><i class="fas fa-flag"></i></button>
+                <button className={classes.spanone} onClick={() => unflagpostHandler(props._id)} ><i class="fas fa-check-circle"></i></button>
+                <button className={classes.spantwo} onClick={() => deletepostHandler(props._id)} ><i class="fas fa-flag"></i></button>
             </React.Fragment>
         )
     }
@@ -178,7 +169,7 @@ const Feed = (props) => {
                         <div><i className="fas fa-heart-broken" style={{ backgroundColor: '#E92F58', padding: '5px', borderRadius: '50%', color: '#fff', margin: '5px' }}></i>{props.dislikes}</div>
                     </div>
                     <div className={classes.flex2_item_two}>
-                        <div onClick={ShowcommentHandler} >{props.arrayOfComment.length}comment</div>
+                        <button onClick={ShowcommentHandler} >{props.arrayOfComment.length} comment</button>
                     </div>
                 </div>
                 <hr></hr>
@@ -188,7 +179,7 @@ const Feed = (props) => {
                     <button type="button" onClick={commentHandler} className={classes.comment_btn}><i className="far fa-comment-alt"></i><span>Comment</span></button>
                 </div>
                 <hr></hr>
-                {console.log("array of comments", props.arrayOfComment)}
+                {/* {console.log("array of comments", props.arrayOfComment)} */}
                 {showcommentcomponent}
                 {addcommentcomponent}
 
@@ -200,4 +191,18 @@ const Feed = (props) => {
     );
 
 }
-export default Feed;
+const mapStateToProps=(state)=>{
+    return {
+        profileId:state.auth.profileId,
+    }
+}
+const mapDispatchToProps=(dispatch)=>{
+    return {
+        likeaction:(postId,profileId)=>dispatch(action.likeaction(postId,profileId)),
+        unlikeaction:(postId,profileId)=>dispatch(action.unlikeaction(postId,profileId)),
+        dislikeaction:(postId,profileId)=>dispatch(action.dislikeaction(postId,profileId)),
+        undislikeaction:(postId,profileId)=>dispatch(action.undislikeaction(postId,profileId))
+    }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(Feed);

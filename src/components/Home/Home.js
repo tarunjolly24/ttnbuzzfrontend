@@ -35,6 +35,7 @@ const Home = (props) => {
         //     setfeed(props.allpost);
         // }
     }
+    
     // const { allpost } = props;
     // useEffect(() => {
     //     setfeed(allpost);
@@ -112,6 +113,5 @@ const mapStateToProps = (state) => {
 
     }
 }
-
 
 export default connect(mapStateToProps)(Home);

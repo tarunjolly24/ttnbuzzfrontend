@@ -1,0 +1,38 @@
+.details_con ul{
+    padding: 5px;
+    padding-left: 0;
+    margin-bottom:10px;
+
+    display: inline-block;
+}
+
+.details_con li{
+    margin-right: 5px;
+    border: 1px solid #e9eaeb;
+    padding:5px 10px;
+    display: inline;
+
+}
+
+
+.about_con p{
+    color:#858688;
+}
+
+.visitwebsite_btn{
+    border:1px solid #B9D7F1;
+    border-radius: 12px;
+    color: #2B7FD3;
+    padding:10px 20px;
+    margin-right: 10px;
+    background-color: #fff;
+}
+
+.friend_btn{
+    border: none;
+    border-radius: 12px;
+    color: #fff;
+    padding:10px 20px;
+    margin-right: 10px;
+    background-color: #2B7FD3;
+}

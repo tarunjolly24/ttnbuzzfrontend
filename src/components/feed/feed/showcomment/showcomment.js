@@ -1,9 +1,23 @@
 import classes from './showcomment.module.css';
-import React from 'react';
-
+import React, { useEffect } from 'react';
+import {useState} from 'react';
+import axios from 'axios';
 const Showcomment=(props)=>{
-    console.log(props.comment);
-    let showallcomment=props.comment.map((eachcomment)=>{
+    const [statecomment,setstatecomment]=useState([])
+
+    // console.log(props.comment);
+    const {postId}=props;
+    useEffect(()=>{
+        axios.post('http://localhost:5000/comment/getpostcomment',{postId:postId}).then((res)=>{
+            setstatecomment(res.data);
+        })
+    },[postId])
+    console.log(statecomment);
+    // const printStateHandler=()=>{
+    //     console.log(statecomment);
+    // }
+
+    let showallcomment=statecomment.map((eachcomment)=>{
         return (
             <div className={classes.flex_con}>
                 <div className={classes.flex_one} >
@@ -14,6 +28,7 @@ const Showcomment=(props)=>{
                <span> {eachcomment.description}</span>
 
                 </div>
+                {/* <button onClick={printStateHandler}> click me to see the state</button> */}
             </div>
         )
     })

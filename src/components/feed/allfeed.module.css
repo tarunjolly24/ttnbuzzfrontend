@@ -1,0 +1,11 @@
+.loadmorebutton{
+    background-color: #2196F3;
+    border: none;
+    padding: 10px 20px;
+    color: #fff;
+    border-radius:25px;
+}
+
+.divloadmorebutton{
+    text-align: center;
+}

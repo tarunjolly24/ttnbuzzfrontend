@@ -11,6 +11,7 @@ export const settoken=function(){
         console.log(document.cookie);
         localStorage.setItem('token',document.cookie);
     }
+    
     document.cookie='jwt=';
     let arr=localStorage.getItem('token').split('')
     if(arr[0]==="j" && arr[1]==="w" && arr[2]=="t" && arr[3]==="=" && arr[4]===";" && arr[5]===" "){

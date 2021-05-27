@@ -11,6 +11,11 @@ export {
 export{
     createPost,
     getPost,
+    pagezeroaction,
+    likeaction,
+    unlikeaction,
+    dislikeaction,
+    undislikeaction
 } from './post';
  
 

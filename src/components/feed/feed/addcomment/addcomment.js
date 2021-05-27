@@ -18,6 +18,7 @@ const Addcomment = (props) => {
         }
         console.log('action fired oncreatecomment')
         props.oncreateComment(data);
+        
         setcom({
             description:''
         })
