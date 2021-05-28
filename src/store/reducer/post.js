@@ -42,9 +42,9 @@ const createpoststart=(state,action)=>{
 const createpostsuccess=(state,action)=>{
     return {
         ...state,
+        posts:[action.payload,...state.posts],
         createdpostloading:false,
         createdpost:action.payload,
-        
     }
 }
 

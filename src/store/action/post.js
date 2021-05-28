@@ -78,6 +78,7 @@ export const createpostfailure=()=>{
 
 
 export const createpostsuccess=(data)=>{
+    console.log(data);
     return{
         type:actiontypes.CREATE_POST_SUCCESS,
         payload:data
@@ -96,6 +97,7 @@ export const createPost=(formdata)=>{
         })
         .then((response)=>{
             console.log(response.data);
+            response.data.comment=[];
             dispatch(createpostsuccess(response.data));
         })
         .catch(()=>{
