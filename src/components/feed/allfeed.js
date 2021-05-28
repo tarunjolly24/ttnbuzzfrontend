@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Feed from './feed/feed';
-import axios from 'axios';
+import axios from '../../axios-instance';
 import { connect } from 'react-redux'
 import * as action from '../../store/action/index';
 import classes from './allfeed.module.css';
@@ -9,15 +9,14 @@ const Allfeed = (props) => {
     const [PageNumber,setPageNumber]=useState(0);
     useEffect(() => {
         props.ongetPost(0);
-        props.ongetComment();
     }, [])
 
-    const removePostFromCurrentStateOffeed=(postId)=>{
-        let updatedfeed=feed.filter((post)=>{
-          return post._id!==postId  
-        })
-        setfeed(updatedfeed);
-    }
+    // const removePostFromCurrentStateOffeed=(postId)=>{
+    //     let updatedfeed=feed.filter((post)=>{
+    //       return post._id!==postId  
+    //     })
+    //     setfeed(updatedfeed);
+    // }
 
     useEffect(()=>{
         return ()=>{
@@ -37,7 +36,7 @@ const Allfeed = (props) => {
     useEffect(() => {
         console.log(flagged);
         if (flagged === true) {
-            axios.get('http://localhost:5000/post/getflagpost')
+            axios.get('/post/getflagpost')
                 .then((res) => {
                     console.log(res.data);
                     // setfeed([]);
@@ -76,13 +75,9 @@ const Allfeed = (props) => {
 
     let feedArray = null;
 
-    if (feed.length !== 0 && props.allcomment !== null) {
+    if (feed.length !== 0) {
 
         feedArray = feed.map((post) => {
-            const arrayOfComment = props.allcomment.filter((eachcomment) => {
-                // console.log("comparing ids of comment postid", eachcomment.postId === post._id)
-                return String(eachcomment.postId) === String(post._id)
-            })
             let isLiked = false;
             for (let i = 0; i < post.likes.length; i++) {
                 if (props.profileId === post.likes[i]) {
@@ -97,9 +92,10 @@ const Allfeed = (props) => {
                     break;
                 }
             }
-            return <Feed functionRemovePostFromStateOfFeed={removePostFromCurrentStateOffeed} isLiked={isLiked} isdisLiked={isdisLiked} flagged={props.flagged} key={post._id} role={props.role} img={post.image} createdBy={post.createdBy} likes={post.likes.length}
+            // functionRemovePostFromStateOfFeed={removePostFromCurrentStateOffeed}
+            return <Feed comment={post.comment}  isLiked={isLiked} isdisLiked={isdisLiked} flagged={props.flagged} key={post._id} role={props.role} img={post.image} createdBy={post.createdBy} likes={post.likes.length}
                 dislikes={post.dislikes.length} description={post.description}
-                _id={post._id} createdOn={post.createdOn} arrayOfComment={arrayOfComment} ></Feed>
+                _id={post._id} createdOn={post.createdOn}  ></Feed>
         })
     }
     return (
@@ -115,10 +111,7 @@ const mapStateToProps = (state) => {
     return {
 
         allpost: state.post.posts,
-        allcomment: state.comment.comments,
         fetchMorePost:state.post.fetchMorePost
-
-
     }
 }
 
@@ -126,7 +119,6 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         ongetPost: (page) => dispatch(action.getPost(page)),
-        ongetComment: () => dispatch(action.getComment()),
         pagezeroaction:()=>dispatch(action.pagezeroaction()),
     }
 }

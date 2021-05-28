@@ -1,7 +1,7 @@
 import classes from './suggestion.module.css';
 import Usersuggestion from './usersuggestion/usersuggestion';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../axios-instance';
 
 const Suggestions = (props) => {
    const [inputShow,setinputshow]= useState(false);
@@ -10,7 +10,7 @@ const Suggestions = (props) => {
         setinputshow(!inputShow);
    }
    useEffect(()=>{
-       axios.get("http://localhost:5000/friends/suggestions")
+       axios.get("/friends/suggestions")
        .then((response)=>{
            console.log(response.data);
            

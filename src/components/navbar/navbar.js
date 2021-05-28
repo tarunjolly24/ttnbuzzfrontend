@@ -10,7 +10,7 @@ const Navbar = (props) => {
     const showListHandler = () => {
         setShowList(!showList);
     }
-    const changeClassHandler=()=>{
+    const changeClassHandler = () => {
         setShowProfile(!showProfile);
     }
     let requestlist = null;
@@ -30,24 +30,26 @@ const Navbar = (props) => {
         <React.Fragment>
             <div className={classes.navbar_container}>
                 <div className="container-fluid" style={{ backgroundColor: '#fff' }}>
-                    <div className="row">
-                        <div className="col-6">
-                            <Link to="/">  <img className={classes.navbar_logo} src='https://res.cloudinary.com/ddcgdnhqp/image/upload/v1621531019/ljnaki4v4mqhdmqv8vfs.jpg' alt="logo"></img></Link>
-                        </div>
-
-                        <div className="col-6">
-                            <div className={classes.navbar_right_side}>
-
-                                <button className={classes.showbtn} onClick={changeClassHandler} ><img className={classes.user_image} src={props.userDetails === null ? 'https://res.cloudinary.com/ddcgdnhqp/image/upload/v1621531829/uxz2n8ntfpk2typowdig.jpg' : props.userDetails.profileImage} alt="user"></img> <span >{props.userDetails === null ? "user name" : props.userDetails.firstName + " " + props.userDetails.lastName}</span></button>
-                                {profileshow}
-
-                                <span className={classes.chat_icon}><i className="fab fa-facebook-messenger"></i></span>
-                                <span className={classes.user_icon} onClick={showListHandler} ><i className="fas fa-user-check"></i>
-                                </span>
-                                {requestlist}
+                    <div style={{width:'95%',margin:'auto'}}>
+                        <div className="row" >
+                            <div className="col-6">
+                                <Link to="/">  <img className={classes.navbar_logo} src='https://res.cloudinary.com/ddcgdnhqp/image/upload/v1621531019/ljnaki4v4mqhdmqv8vfs.jpg' alt="logo"></img></Link>
                             </div>
-                        </div>
 
+                            <div className="col-6">
+                                <div className={classes.navbar_right_side}>
+
+                                    <button className={classes.showbtn} onClick={changeClassHandler} ><img className={classes.user_image} src={props.userDetails === null ? 'https://res.cloudinary.com/ddcgdnhqp/image/upload/v1621531829/uxz2n8ntfpk2typowdig.jpg' : props.userDetails.profileImage} alt="user"></img> <span >{props.userDetails === null ? "user name" : props.userDetails.firstName + " " + props.userDetails.lastName}</span></button>
+                                    {profileshow}
+
+                                    <span className={classes.chat_icon}><i className="fab fa-facebook-messenger"></i></span>
+                                    <span className={classes.user_icon} onClick={showListHandler} ><i className="fas fa-user-check"></i>
+                                    </span>
+                                    {requestlist}
+                                </div>
+                            </div>
+
+                        </div>
                     </div>
 
                 </div>

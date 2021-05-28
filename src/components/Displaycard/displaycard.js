@@ -14,12 +14,12 @@ const Displaycard=(props)=>{
                 </div>
                 <div className={classes.text_con}>
                     <h5>{props.userDetails!==null?props.userDetails.firstName +" "+props.userDetails.lastName:''}</h5>
-                    <p>Newly Recruit at TTN</p>
+                    <p>{props.userDetails!=null?(props.userDetails.designation===''?'':props.userDetails.designation+"at TTN"):''}</p>
                     
                 </div>
                 <div className={classes.flex_con}>
                     <div className={classes.flex_one}>
-                        <p>234</p>
+                        <p>{props.userDetails!=null?props.userDetails.profileCount:0}</p>
                         <p className={classes.post_profile}>Profile Views</p>
                     </div>
                     <div className={classes.flex_two}>

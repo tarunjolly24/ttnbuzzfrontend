@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../axios-instance';
 import * as actiontypes from './actiontypes';
 
 export const settoken=function(){
@@ -54,7 +54,7 @@ export const getUserDetails=function(){
     console.log("getUserDetails called");
     return (dispatch)=>{
         dispatch(getUserDetailsStart());
-        axios({ method: 'GET', url: 'http://localhost:5000/profile/userprofile' }).then((res) => {
+        axios({ method: 'GET', url: '/profile/userprofile' }).then((res) => {
             console.log(res.data);
             let obj={
                 _id:res.data._id,
@@ -70,7 +70,10 @@ export const getUserDetails=function(){
                 friendsList:res.data.friendsList,
                 requestList:res.data.requestList,
                 requestSent:res.data.requestSent,
-                role:res.data.role
+                role:res.data.role,
+                profileCount:res.data.profileCount,
+                designation:res.data.designation===undefined?'':res.data.designation,
+                website:res.data.website===undefined?'':res.data.website
             }
             dispatch(getUserDetailsSuccess(obj));
         })

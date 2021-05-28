@@ -1,7 +1,7 @@
 import classes from './contact.module.css';
 import Usercontact from './usercontact/usercontact';
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../../axios-instance';
 
 const Contact = (props) => {
    const [inputShow,setinputshow]= useState(false);
@@ -11,7 +11,7 @@ const Contact = (props) => {
    }
    useEffect(()=>{
        console.log('get all friends')
-       axios.get("http://localhost:5000/friends/getallfriends")
+       axios.get("/friends/getallfriends")
        .then((response)=>{
            console.log(response.data);
            if(Object.keys(response.data).length!==0)

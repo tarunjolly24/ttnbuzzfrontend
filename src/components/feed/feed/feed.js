@@ -3,10 +3,12 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'
 import Addcomment from './addcomment/addcomment';
 import Showcomment from './showcomment/showcomment';
-import axios from 'axios';
+import axios from '../../../axios-instance';
 import { connect } from 'react-redux';
 import * as action from '../../../store/action/index';
+import Moment from 'react-moment'
 const Feed = (props) => {
+    // console.log(props.comment);
     const [likeon, setlikeon] = useState(false);
     const [dislikeon, setdislikeon] = useState(false);
     const [isAddCommentVisible, setisAddCommentVisible] = useState(false);
@@ -59,7 +61,7 @@ const Feed = (props) => {
     const reportPostHandler = (event, postId) => {
         event.stopPropagation();//no use
 
-        axios.post('http://localhost:5000/post/flagpost', { postId: postId })
+        axios.post('/post/flagpost', { postId: postId })
             .then((res) => {
                 // console.log(res);
 
@@ -67,31 +69,31 @@ const Feed = (props) => {
             .catch((err) => {
                 // console.log(err);
             })
-        props.functionRemovePostFromStateOfFeed(postId);
+        // props.functionRemovePostFromStateOfFeed(postId);
 
     }
 
     const unflagpostHandler = (postId) => {
-        axios.post('http://localhost:5000/post/unflagpost', { postId: postId })
+        axios.post('/post/unflagpost', { postId: postId })
             .then((res) => {
                 // console.log(res);
             })
             .catch((err) => {
                 // console.log(err);
             })
-        props.functionRemovePostFromStateOfFeed(postId);
+        // props.functionRemovePostFromStateOfFeed(postId);
 
     }
 
     const deletepostHandler = (postId) => {
-        axios.post('http://localhost:5000/post/deletepost', { postId: postId })
+        axios.post('/post/deletepost', { postId: postId })
             .then((res) => {
                 // console.log(res);
             })
             .catch((err) => {
                 // console.log(err);
             })
-        props.functionRemovePostFromStateOfFeed(postId);
+        // props.functionRemovePostFromStateOfFeed(postId);
 
     }
 
@@ -99,7 +101,7 @@ const Feed = (props) => {
     if (isshowcomment) {
         showcommentcomponent = (
             <React.Fragment>
-                <Showcomment postId={props._id} comment={props.arrayOfComment}></Showcomment>
+                <Showcomment postId={props._id} comment={props.comment}></Showcomment>
             </React.Fragment>
         )
     }
@@ -144,7 +146,7 @@ const Feed = (props) => {
                             </div>
                             <div className={classes.flex_inner_one_container}>
                                 <span>{props.createdBy.firstName + " " + props.createdBy.lastName}</span>
-                                <span>{props.createdOn}</span>
+                                <span><Moment fromNow>{props.createdOn}</Moment></span>
                             </div>
                         </div>
                     </div>
@@ -169,7 +171,7 @@ const Feed = (props) => {
                         <div><i className="fas fa-heart-broken" style={{ backgroundColor: '#E92F58', padding: '5px', borderRadius: '50%', color: '#fff', margin: '5px' }}></i>{props.dislikes}</div>
                     </div>
                     <div className={classes.flex2_item_two}>
-                        <button onClick={ShowcommentHandler} >{props.arrayOfComment.length} comment</button>
+                        <button onClick={ShowcommentHandler} >comment</button>
                     </div>
                 </div>
                 <hr></hr>

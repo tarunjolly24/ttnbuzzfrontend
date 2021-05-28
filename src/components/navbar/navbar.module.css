@@ -1,6 +1,6 @@
 .navbar_logo{
-    height: 50px;
-    width: 50px;
+    height: 60px;
+    width: 60px;
 
 }
 
@@ -11,7 +11,15 @@
     border-radius: 50%;
 }
 
-.user_icon,.chat_icon{
+.user_icon{
+    padding: 10px;
+    background-color: #E4E6EB;
+    border-radius: 50%;
+    /* margin: 0 5px; */
+    margin-left: 5px;
+}
+
+.chat_icon{
     padding: 10px;
     background-color: #E4E6EB;
     border-radius: 50%;
@@ -30,8 +38,8 @@
 
 .navbar_right_side{
     float: right;
-    padding:8px 0px;    
-    
+    padding:8px 0px;   
+    /* display: flex; */
 }
 
 .display_container{

@@ -2,7 +2,7 @@
 //success fetch post 
 //end fetch post 
 
-import axios from "axios"
+import axios from "../../axios-instance"
 import * as actiontypes from './actiontypes';
 
 export const getpoststart=()=>{
@@ -39,7 +39,7 @@ export const getPost=(page)=>{
         // if(page===0)dispatch(pagezeroaction());
         dispatch(getpoststart());
         console.log(page);
-        axios.get(`http://localhost:5000/post/getallpost?page=${page}`)
+        axios.get(`/post/getallpost?page=${page}`)
         .then((response)=>{
             console.log(response.data);
             if(response.data.length>0)
@@ -88,7 +88,7 @@ export const createPost=(formdata)=>{
     return (dispatch)=>{
         console.log('dispatch post')
         dispatch(createpoststart());
-        axios.post('http://localhost:5000/post/createpost',formdata,{
+        axios.post('/post/createpost',formdata,{
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'multipart/form-data'
@@ -140,7 +140,7 @@ export const likeaction=(postId,profileId)=>{
     return (dispatch)=>{
 
         dispatch(likepost(postId,profileId))
-        axios.post('http://localhost:5000/post/likepost', { postId: postId })
+        axios.post('/post/likepost', { postId: postId })
         .then((res) => {
             // console.log(res);
         })
@@ -151,7 +151,7 @@ export const unlikeaction=(postId,profileId)=>{
     return (dispatch)=>{
 
         dispatch(unlikepost(postId,profileId))
-        axios.post('http://localhost:5000/post/unlikepost', { postId: postId })
+        axios.post('/post/unlikepost', { postId: postId })
         .then((res) => {
             // console.log(res);
         })
@@ -162,7 +162,7 @@ export const dislikeaction=(postId,profileId)=>{
     return (dispatch)=>{
         dispatch(dislikepost(postId,profileId));
 
-        axios.post('http://localhost:5000/post/dislikepost', { postId: postId })
+        axios.post('/post/dislikepost', { postId: postId })
                     .then((res) => {
                         // console.log(res);
                     })
@@ -174,7 +174,7 @@ export const undislikeaction=(postId,profileId)=>{
 
         dispatch(undislikepost(postId,profileId));
     
-        axios.post('http://localhost:5000/post/undislikepost', { postId: postId })
+        axios.post('/post/undislikepost', { postId: postId })
         .then((res) => {
             // console.log(res);
         })   

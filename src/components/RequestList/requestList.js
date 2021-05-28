@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../axios-instance';
 import React, { useEffect, useState } from 'react';
 import classes from './requestList.module.css';
 import Requestlistcomponent from './requestlistcomponent/requestlistcomponent';
@@ -6,7 +6,7 @@ const RequestList=(props)=>{
     
     const [allrequest,setallrequest]=useState([]);
     const acceptRequestHandler=(requestprofileId)=>{
-        axios.post('http://localhost:5000/friends/acceptrequest',{receiverProfileId:requestprofileId})
+        axios.post('/friends/acceptrequest',{receiverProfileId:requestprofileId})
         .then((response)=>{
             console.log(response);
             const arr=allrequest.filter((item)=>{
@@ -16,7 +16,7 @@ const RequestList=(props)=>{
         })
     }
     const rejectRequestHandler=(requestprofileId)=>{
-            axios.post('http://localhost:5000/friends/rejectrequest',{receiverProfileId:requestprofileId})
+            axios.post('/friends/rejectrequest',{receiverProfileId:requestprofileId})
             .then((response)=>{
                 console.log(response);
                 const arr=allrequest.filter((item)=>{
@@ -30,7 +30,7 @@ const RequestList=(props)=>{
     
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/friends/friendrequest')
+        axios.get('/friends/friendrequest')
         .then((resposne)=>{
             console.log(resposne.data);
             if(resposne.data.length!==0){

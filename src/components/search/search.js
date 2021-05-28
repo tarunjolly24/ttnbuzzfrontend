@@ -1,4 +1,4 @@
-import axios from 'axios';
+
 import React,{useState} from 'react';
 import classes from './search.module.css';
 import * as actions from '../../store/action/index';

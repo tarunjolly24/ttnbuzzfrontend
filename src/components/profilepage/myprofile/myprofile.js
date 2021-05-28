@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import * as actions from '../../../store/action/index';
 import { connect } from 'react-redux';
-import axios from 'axios';
+import axios from '../../../axios-instance';
 import { withRouter } from 'react-router';
 import Otherprofile from '../otherprofile/otherprofile';
 const logo=require('../../../img/user.jpeg');
@@ -78,7 +78,7 @@ const Myprofile = (props) => {
     const saveDetailHandler=(e)=>{
         e.preventDefault();
         //api request to update the details
-        axios.post('http://localhost:5000/profile/userprofileupdate',{updatedDetails:mydetails})
+        axios.post('/profile/userprofileupdate',{updatedDetails:mydetails})
         .then((res)=>{
             console.log(res);
             alert('info updated')
@@ -103,7 +103,7 @@ const Myprofile = (props) => {
     // formdata.append("text","dfhgsdjf");
     // console.log(formdata);
         console.log(formdata);
-        axios.post('http://localhost:5000/profile/image-upload',formdata, {
+        axios.post('/profile/image-upload',formdata, {
             headers: {
                 'Accept': 'application/json',
               'Content-Type': 'multipart/form-data'

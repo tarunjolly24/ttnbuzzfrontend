@@ -1,6 +1,6 @@
 
 import './App.css';
-import axios from 'axios';
+// import axios from 'axios';
 import { Route, Switch, Link, Redirect } from 'react-router-dom';
 import LoginPage from './components/loginpage/loginpage';
 import Profile from './components/profilepage/profile'
@@ -10,17 +10,17 @@ import * as actions from './store/action/index';
 import { useEffect } from 'react';
 import Logout from './components/loginpage/logout/logout';
 import Home from './components/Home/Home';
-axios.interceptors.request.use(config => {
-  // perform a task before the request is sent
-  console.log('Request was sent');
-  // let x = document.cookie.split('=')[1];
-  config.headers.Authorization = localStorage.getItem('token');
-  console.log(config)
-  return config;
-}, error => {
-  // handle the error
-  return Promise.reject(error);
-});
+// axios.interceptors.request.use(config => {
+//   // perform a task before the request is sent
+//   console.log('Request was sent');
+//   // let x = document.cookie.split('=')[1];
+//   config.headers.Authorization = localStorage.getItem('token');
+//   console.log(config)
+//   return config;
+// }, error => {
+//   // handle the error
+//   return Promise.reject(error);
+// });
 
 
 

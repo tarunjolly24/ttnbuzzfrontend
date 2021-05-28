@@ -11,36 +11,17 @@ import { connect } from 'react-redux';
 import * as action from '../../store/action/index';
 import axios from 'axios';
 const Home = (props) => {
-    // const [feed, setfeed] = useState([]);
     const [flagged, setflagged] = useState(false);
     console.log(props);
-    // useEffect(() => {
-    //     props.ongetPost();
-    //     props.ongetComment();
-    // }, [])
+
     let moderator = null;
     const moderatorviewHandler = () => {
         console.log(flagged);
 
         setflagged(!flagged);
-        // if (flagged == false) {
-
-        //     axios.get('http://localhost:5000/post/getflagpost')
-        //         .then((res) => {
-        //             console.log(res.data);
-        //             setfeed(res.data);
-        //         })
-
-        // } else {
-        //     setfeed(props.allpost);
-        // }
+        
     }
     
-    // const { allpost } = props;
-    // useEffect(() => {
-    //     setfeed(allpost);
-
-    // }, [allpost])
     if (props.userDetails !== null) {
 
         if (props.userDetails.role == 'admin') {
@@ -49,7 +30,7 @@ const Home = (props) => {
                 <div>
                     <label className={classes.switch}>
                         <input type="checkbox" checked={flagged} onChange={moderatorviewHandler} ></input>
-                        <span className={[classes.slider, classes.round].join(' ')}>Moderator Only</span>
+                        <span className={[classes.slider, classes.round].join(' ')} >Moderator Only</span>
                     </label>
                 </div>
             )
@@ -60,12 +41,11 @@ const Home = (props) => {
         <React.Fragment>
             <div className={classes.home_container}>
                 <Navbar></Navbar>
-                <div className="container-fluid" style={{ padding: '40px' }} >
+                <div className="container-fluid" style={{ width:'95%',margin:'auto',marginTop:'40px' }} >
                     <div className="row">
                         <div className="col-3">
                             <Displaycard></Displaycard>
                             <Recent></Recent>
-
                         </div>
 
                         <div className="col-6">

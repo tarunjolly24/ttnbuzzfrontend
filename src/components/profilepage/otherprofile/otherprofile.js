@@ -1,8 +1,20 @@
-import React from 'react';
+import axios from '../../../axios-instance';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import classes from './otherprofile.module.css';
 const Otherprofile=(props)=>{
     console.log(props)
+    const {showDetails}=props;
+    useEffect(()=>{
+        console.log(props.showDetails._id);
+        axios.post('/profile/profilecount',{receiverProfileId:props.showDetails._id})
+        .then(res=>{
+            console.log(res);
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    },[showDetails])
     // {debugger}
     let button=null;
     if(props.userDetails!=null){
@@ -54,6 +66,7 @@ const Otherprofile=(props)=>{
 const mapStateToProps=(state)=>{
     return{
         userDetails:state.auth.userDetails,
+        profileId:state.auth.profileId
     }
 }
 

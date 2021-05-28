@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "../../axios-instance"
 import * as actiontypes from './actiontypes';
 
 export const getProfileStart=()=>{
@@ -28,7 +28,7 @@ export const getProfile=function(profileId){
     return (dispatch)=>{
         //start
         dispatch(getProfileStart());
-        axios.get(`http://localhost:5000/profile/anyuserprofile?profileId=${profileId}`)
+        axios.get(`/profile/anyuserprofile?profileId=${profileId}`)
         .then((res)=>{
             //success
             console.log('response of profile',res);

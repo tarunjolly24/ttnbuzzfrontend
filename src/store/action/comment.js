@@ -2,7 +2,7 @@
 //success fetch post 
 //end fetch post 
 
-import axios from "axios"
+import axios from "../../axios-instance"
 import * as actiontypes from './actiontypes';
 
 export const getcommentstart=()=>{
@@ -29,7 +29,7 @@ export const getcommentsuccess=(data)=>{
 export const getComment=()=>{
     return (dispatch)=>{
         dispatch(getcommentstart());
-        axios.get('http://localhost:5000/comment/getallcomment')
+        axios.get('/comment/getallcomment')
         .then((response)=>{
             console.log(response.data);
             dispatch(getcommentsuccess(response.data));
@@ -68,7 +68,7 @@ export const createcommentsuccess=(data)=>{
 export const createComment=(data)=>{
     return (dispatch)=>{
         dispatch(getcommentstart());
-        axios.post('http://localhost:5000/comment/createcomment',{data:data},{
+        axios.post('/comment/createcomment',{data:data},{
            
         })
         .then((response)=>{
