@@ -16,6 +16,11 @@ const Addcomment = (props) => {
 
 
         }
+        props.updatecurrentcomment({
+            description:com.description,
+            porstId:props.postid,
+            profileId:props.userDetails
+        });
         console.log('action fired oncreatecomment')
         props.oncreateComment(data);
         
@@ -48,6 +53,7 @@ const Addcomment = (props) => {
 
 const mapStateToProps=(state)=>{
     return{
+        userDetails:state.auth.userDetails,
         profileID:state.auth.profileId,
     }
 }

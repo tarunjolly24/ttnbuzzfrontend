@@ -96,12 +96,19 @@ const Feed = (props) => {
         // props.functionRemovePostFromStateOfFeed(postId);
 
     }
-
+    const [currentcomment,setcurrentcomment]=useState({
+        description:'',
+        profileId:'',
+        postId:''
+    })
+    const updatecurrentcomment=(data)=>{
+        setcurrentcomment(data);
+    }
     let showcommentcomponent = null;
     if (isshowcomment) {
         showcommentcomponent = (
             <React.Fragment>
-                <Showcomment postId={props._id} comment={props.comment}></Showcomment>
+                <Showcomment currentcomment={currentcomment} postId={props._id} comment={props.comment}></Showcomment>
             </React.Fragment>
         )
     }
@@ -110,7 +117,7 @@ const Feed = (props) => {
     if (isAddCommentVisible) {
         addcommentcomponent = (
             <React.Fragment>
-                <Addcomment postid={props._id}></Addcomment>
+                <Addcomment  updatecurrentcomment={updatecurrentcomment} postid={props._id}></Addcomment>
             </React.Fragment>
         )
     }

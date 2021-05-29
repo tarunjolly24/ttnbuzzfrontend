@@ -28,6 +28,12 @@ const Showcomment = (props) => {
         // })
 
     }, [postId,comment])
+    const {currentcomment}=props;
+    useEffect(()=>{
+        if(currentcomment.description!==''){
+            setstatecomment([...statecomment,currentcomment]);
+        }
+    },[currentcomment])
     console.log(statecomment);
     // const printStateHandler=()=>{
     //     console.log(statecomment);
