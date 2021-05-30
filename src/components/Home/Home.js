@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 import Navbar from '../navbar/navbar';
 import Contact from '../contacts/contact';
 import Suggestions from '../suggestions/suggestion';
@@ -8,8 +8,7 @@ import Displaycard from '../Displaycard/displaycard';
 import Allfeed from '../feed/allfeed';
 import classes from './Home.module.css';
 import { connect } from 'react-redux';
-import * as action from '../../store/action/index';
-import axios from 'axios';
+
 const Home = (props) => {
     const [flagged, setflagged] = useState(false);
     console.log(props);
@@ -24,7 +23,7 @@ const Home = (props) => {
     
     if (props.userDetails !== null) {
 
-        if (props.userDetails.role == 'admin') {
+        if (props.userDetails.role === 'admin') {
 
             moderator = (
                 <div>

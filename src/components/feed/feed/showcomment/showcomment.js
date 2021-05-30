@@ -14,7 +14,7 @@ const Showcomment = (props) => {
     // const {comments}=props;
     useEffect(() => {
         setstatecomment(comment);
-        if(comment.length==0){
+        if(comment.length===0){
             setmorecomment(false);
         }
         // setloading(true);
@@ -31,10 +31,10 @@ const Showcomment = (props) => {
     const {currentcomment}=props;
     useEffect(()=>{
         if(currentcomment.description!==''){
-            setstatecomment([...statecomment,currentcomment]);
+            setstatecomment((prevstate)=>[...prevstate,currentcomment]);
         }
     },[currentcomment])
-    console.log(statecomment);
+    // console.log(statecomment);
     // const printStateHandler=()=>{
     //     console.log(statecomment);
     // }
@@ -43,7 +43,7 @@ const Showcomment = (props) => {
         setloading(true);
         axios.post('/comment/getpostcomment', { postId: postId, page: page, offset: offset }).then((res) => {
             console.log(res.data);
-            if (res.data.length == 0) {
+            if (res.data.length === 0) {
                 setmorecomment(false);
             }
             setstatecomment([...statecomment, ...res.data]);

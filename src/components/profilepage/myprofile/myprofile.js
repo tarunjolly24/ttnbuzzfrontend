@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import axios from '../../../axios-instance';
 import { withRouter } from 'react-router';
 import Otherprofile from '../otherprofile/otherprofile';
-const logo=require('../../../img/user.jpeg');
 const Myprofile = (props) => {
     console.log(props);
     console.log(props.match.params.id);
@@ -94,7 +93,7 @@ const Myprofile = (props) => {
         console.log(e.target.files[0]);
         console.log(files);
         const formdata = new FormData()
-        const types = ['image/png', 'image/jpeg', 'image/gif']
+        // const types = ['image/png', 'image/jpeg', 'image/gif']
 
         files.forEach((file, i) => {
       formdata.append(i, file)

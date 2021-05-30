@@ -22,9 +22,9 @@ const Suggestions = (props) => {
     //action dispatch
     axios.post('http://localhost:5000/friends/sentrequest',{receiverProfileId:receiverProfileId})
     .then((res)=>{
-        console.log(res);
-        const arr= suggestions.filter((item,index)=>{
-           if(item._id!==receiverProfileId)return true;
+        // console.log(res);
+        const arr= suggestions.filter((item)=>{
+           return item._id!==receiverProfileId
         })
         setsuggestion(arr);
     })

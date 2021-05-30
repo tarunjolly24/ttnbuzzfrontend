@@ -6,8 +6,8 @@ const Otherprofile=(props)=>{
     console.log(props)
     const {showDetails}=props;
     useEffect(()=>{
-        console.log(props.showDetails._id);
-        axios.post('/profile/profilecount',{receiverProfileId:props.showDetails._id})
+        console.log(showDetails._id);
+        axios.post('/profile/profilecount',{receiverProfileId:showDetails._id})
         .then(res=>{
             console.log(res);
         })

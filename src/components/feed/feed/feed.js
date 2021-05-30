@@ -1,6 +1,5 @@
 import classes from './feed.module.css';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom'
 import Addcomment from './addcomment/addcomment';
 import Showcomment from './showcomment/showcomment';
 import axios from '../../../axios-instance';
@@ -133,7 +132,7 @@ const Feed = (props) => {
 
     let onlymoderator = null;
     // console.log(props.flagged);
-    if (props.role == 'admin' && props.flagged == true) {
+    if (props.role === 'admin' && props.flagged === true) {
         onlymoderator = (
             <React.Fragment>
                 <button className={classes.spanone} onClick={() => unflagpostHandler(props._id)} ><i class="fas fa-check-circle"></i></button>
@@ -170,7 +169,7 @@ const Feed = (props) => {
                     <p>{props.description}</p>
                 </div>
                 <div className={classes.post_image}>
-                    {props.img == '' ? null : <img src={props.img} alt='post_image'></img>}
+                    {props.img === '' ? null : <img src={props.img} alt='post_image'></img>}
                 </div>
                 <div className={classes.flex_container_two}>
                     <div className={classes.flex2_item_one}>

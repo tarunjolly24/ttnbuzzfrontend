@@ -1,7 +1,7 @@
 
 import './App.css';
 // import axios from 'axios';
-import { Route, Switch, Link, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import LoginPage from './components/loginpage/loginpage';
 import Profile from './components/profilepage/profile'
 import "bootstrap/dist/css/bootstrap.min.css";

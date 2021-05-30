@@ -3,7 +3,7 @@ import * as actiontypes from './actiontypes';
 
 export const settoken=function(){
     console.log('settoken called');
-    console.log(localStorage.getItem('token'))
+    // console.log(localStorage.getItem('token'))
     console.log(document.cookie);
     
 
@@ -12,9 +12,9 @@ export const settoken=function(){
         localStorage.setItem('token',document.cookie);
     }
     
-    document.cookie='jwt=';
+    // document.cookie='jwt=';
     let arr=localStorage.getItem('token').split('')
-    if(arr[0]==="j" && arr[1]==="w" && arr[2]=="t" && arr[3]==="=" && arr[4]===";" && arr[5]===" "){
+    if(arr[0]==="j" && arr[1]==="w" && arr[2]==="t" && arr[3]==="=" && arr[4]===";" && arr[5]===" "){
         arr.splice(0,6);
         arr=arr.join('')
         localStorage.setItem('token',arr);

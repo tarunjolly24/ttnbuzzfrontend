@@ -7,9 +7,10 @@ import classes from './allfeed.module.css';
 const Allfeed = (props) => {
     const [feed, setfeed] = useState([]);
     const [PageNumber,setPageNumber]=useState(0);
+    const {ongetPost}=props;
     useEffect(() => {
-        props.ongetPost(0);
-    }, [])
+        ongetPost(0);
+    }, [ongetPost])
 
     // const removePostFromCurrentStateOffeed=(postId)=>{
     //     let updatedfeed=feed.filter((post)=>{
@@ -17,14 +18,14 @@ const Allfeed = (props) => {
     //     })
     //     setfeed(updatedfeed);
     // }
-
+    const {pagezeroaction}=props;
     useEffect(()=>{
         return ()=>{
             console.log("all feed component unmount");
-            props.pagezeroaction();
+            pagezeroaction();
         
         }
-    },[])
+    },[pagezeroaction])
     
     const { allpost } = props;
     useEffect(() => {
@@ -45,12 +46,12 @@ const Allfeed = (props) => {
                 })
         } else {
             // setfeed([]);
-            setfeed(props.allpost);
+            setfeed(allpost);
             //action dispatch to set posts again in redux 
             // debugger
             
         }
-    }, [flagged])
+    }, [flagged,allpost])
     console.log(feed)
     // debugger
     const loadMoreHandler=()=>{
@@ -60,7 +61,7 @@ const Allfeed = (props) => {
         }
     }
     let loadmorepostbtn=null;
-    if(props.flagged==true){
+    if(props.flagged===true){
         loadmorepostbtn=null;
     }else if(props.fetchMorePost===false){
         loadmorepostbtn=(
