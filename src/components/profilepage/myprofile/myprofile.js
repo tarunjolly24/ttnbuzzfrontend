@@ -35,6 +35,7 @@ const Myprofile = (props) => {
     // console.log(props.userdetails);
     let {getProfile,userdetails,profiledetails,match}=props;
     useEffect(()=>{
+        console.log(match.params.id);
         getProfile(match.params.id);
     },[getProfile,match]);
 

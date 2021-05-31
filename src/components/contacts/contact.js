@@ -6,6 +6,7 @@ import axios from '../../axios-instance';
 const Contact = (props) => {
    const [inputShow,setinputshow]= useState(false);
    const [suggestions,setsuggestion]=useState([]);
+   const [searchsuggestions,setsearchsuggestions]=useState([]);
    const inputHandler=()=>{
         setinputshow(!inputShow);
    }
@@ -18,14 +19,36 @@ const Contact = (props) => {
            setsuggestion(response.data);
        })
    },[])
+   
    let suggest=null;
    if(suggestions!=null){
-       suggest=suggestions.map((item)=>{
-           return <Usercontact user={item}></Usercontact>
-       })
+       if(suggestions.length>0){
+           suggest=suggestions.map((item)=>{
+               return <Usercontact user={item} key={item._id} ></Usercontact>
+           })
+           
+       }
+       if(searchsuggestions.length>0){
+        suggest=searchsuggestions.map((item)=>{
+            return <Usercontact user={item} key={item._id} ></Usercontact>
+        })
+       }
+   }
+   
+
+   const searchHandler=(e)=>{
+       const output=[];
+        console.log(e.target.value);
+        for(let i=0;i<suggestions.length;i++){
+            if(suggestions[i].firstName.toLowerCase().includes(e.target.value)===true ||  suggestions[i].lastName.toLowerCase().includes(e.target.value) === true){
+                output.push(suggestions[i]);
+            }
+        }
+        setsearchsuggestions(output);
+        
    }
 
-   const searchBox=!inputShow?null:<input type="text" className="form-control" placeholder="Search"  ></input>;
+   const searchBox=!inputShow?null:<input type="text" className="form-control" placeholder="Search" onChange={(e)=>{searchHandler(e)}} ></input>;
     return (
         <div className={classes.suggestion}>
             <div className={classes.flexcontainer}>

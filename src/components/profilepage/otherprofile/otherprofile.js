@@ -1,20 +1,11 @@
 import axios from '../../../axios-instance';
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import classes from './otherprofile.module.css';
 const Otherprofile = (props) => {
     console.log(props)
     const { showDetails } = props;
-    useEffect(() => {
-        console.log(showDetails._id);
-        axios.post('/profile/profilecount', { receiverProfileId: showDetails._id })
-            .then(res => {
-                console.log(res);
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }, [showDetails])
+    
     const removeFriendHandler = (requestprofileId) => {
 
     }
