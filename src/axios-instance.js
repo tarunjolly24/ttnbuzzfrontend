@@ -2,8 +2,9 @@ import axios from 'axios';
 
 const instance= axios.create({
     // baseURL:'http://localhost:5000/'
-    
-    baseURL:'https://ttnbuzzbackend.el.r.appspot.com/'
+
+    // baseURL:'https://ttnbuzzbackend.el.r.appspot.com/'
+    baseURL:`${process.env.REACT_APP_API_URL.trim()}`
 })
 
 instance.interceptors.request.use(config => {
