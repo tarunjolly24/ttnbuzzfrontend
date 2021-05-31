@@ -32,6 +32,13 @@ const Otherprofile = (props) => {
                 alert("Friend Request Rejected");
             })
     }
+    const addfriendHandler=(requestprofileId)=>{
+        axios.post('/friends/sentrequest',{receiverProfileId:requestprofileId})
+        .then((response)=>{
+            console.log(response);
+            alert("Request Sent");
+        })
+    }
     // {debugger}
     let button = null;
     if (props.userDetails != null) {
@@ -52,7 +59,7 @@ const Otherprofile = (props) => {
             )
         } else {
             button = (
-                <button className={classes.friend_btn} type="button"> <i class="fas fa-user-plus"></i> Add Friend</button>
+                <button className={classes.friend_btn} type="button" onClick={()=>addfriendHandler(showDetails._id)} > <i class="fas fa-user-plus"></i> Add Friend</button>
             )
         }
     }

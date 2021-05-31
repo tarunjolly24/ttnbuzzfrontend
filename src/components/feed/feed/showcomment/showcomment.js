@@ -13,10 +13,12 @@ const Showcomment = (props) => {
     const { postId,comment } = props;
     // const {comments}=props;
     useEffect(() => {
+        // console.log(comment);
         setstatecomment(comment);
-        if(comment.length===0){
-            setmorecomment(false);
-        }
+        // console.log(comment);
+        // if(comment.length===0){
+        //     setmorecomment(false);
+        // }
         // setloading(true);
         // axios.post('http://localhost:5000/comment/getpostcomment', { postId: postId, page: page, offset: offset }).then((res) => {
         //     setstatecomment(res.data);
@@ -30,23 +32,29 @@ const Showcomment = (props) => {
     }, [postId,comment])
     const {currentcomment}=props;
     useEffect(()=>{
+        // console.log(statecomment);
         if(currentcomment.description!==''){
             setstatecomment((prevstate)=>[...prevstate,currentcomment]);
         }
     },[currentcomment])
-    // console.log(statecomment);
-    // const printStateHandler=()=>{
-    //     console.log(statecomment);
-    // }
 
     const bringMorePost = () => {
         setloading(true);
-        axios.post('/comment/getpostcomment', { postId: postId, page: page, offset: offset }).then((res) => {
+        let minustwo=0;
+        if(comment.length===0){
+            minustwo=2;
+        }
+        axios.post('/comment/getpostcomment', { postId: postId, page: page, offset: offset,minustwo:minustwo }).then((res) => {
             console.log(res.data);
-            if (res.data.length === 0) {
+            if (res.data.length<3) {
                 setmorecomment(false);
             }
-            setstatecomment([...statecomment, ...res.data]);
+            
+            const updatedCommentArr=[...statecomment,...res.data].sort((a,b)=>{
+                return b.createdOn-a.createdOn;
+            })
+            // setstatecomment([...statecomment, ...res.data]);
+            setstatecomment(updatedCommentArr);
             setloading(false);
             setpage(page + 1);
             setoffset(3);

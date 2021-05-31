@@ -43,7 +43,7 @@ const Allfeed = (props) => {
                     // setfeed([]);
                     setfeed(res.data);
                     // debugger
-                })
+            })
         } else {
             // setfeed([]);
             setfeed(allpost);
@@ -51,7 +51,7 @@ const Allfeed = (props) => {
             // debugger
             
         }
-    }, [flagged,allpost])
+    }, [flagged,allpost,ongetPost])
     console.log(feed)
     // debugger
     const loadMoreHandler=()=>{

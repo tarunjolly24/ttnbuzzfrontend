@@ -38,7 +38,7 @@ const RequestList=(props)=>{
             }
         })
     },[])
-    let requestlistcomponent="Loading";
+    let requestlistcomponent="No new Request";
     if(allrequest.length!==0){
        requestlistcomponent=allrequest.map((eachrequest)=>{
            console.log(eachrequest);

@@ -13,13 +13,12 @@ const Addcomment = (props) => {
             description:com.description,
             postId:props.postid,
             profileId:props.profileID,
-
-
         }
         props.updatecurrentcomment({
             description:com.description,
             porstId:props.postid,
-            profileId:props.userDetails
+            profileId:props.userDetails,
+            createdOn:new Date()
         });
         console.log('action fired oncreatecomment')
         props.oncreateComment(data);
@@ -40,7 +39,7 @@ const Addcomment = (props) => {
     return (
         <div className={classes.search_container_flex}>
             <div className={classes.flex_con_one}>
-                <img className={classes.user_image} src="./images/user.jpeg" alt="user"></img>
+                <img className={classes.user_image} src={props.userDetails!=null?props.userDetails.profileImage:''} alt="user"></img>
             </div>
             <div className={classes.flex_con_two}>
                 <input className={classes.search_bar} type="text" placeholder="Write a comment..." value={com.description} onChange={(e)=>commentHandler(e)}></input>

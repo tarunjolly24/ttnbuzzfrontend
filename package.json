@@ -25,6 +25,7 @@
   "scripts": {
     "local":"SET REACT_APP_API_URL=http://localhost:5000 && npm start",
     "google":"SET REACT_APP_API_URL=https://ttnbuzzbackend.el.r.appspot.com && npm start",
+    "heroku":"SET REACT_APP_API_URL=https://ttnbuzzapi.herokuapp.com && npm start",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

@@ -181,10 +181,14 @@ hr{
 }
 
 .islikedpost{
-    color:green;
+    color:#4EB0F4;
+    /* background-color: #4EB0F4; */
 }
 
-
+.isdislikedpost{
+    background-color: #E9385F;
+    color:#fff;
+}
 
 .reportdiv{
     position: absolute;

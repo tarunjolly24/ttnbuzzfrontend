@@ -51,7 +51,15 @@ const Feed = (props) => {
         setisAddCommentVisible(!isAddCommentVisible);
     }
     const ShowcommentHandler = () => {
+        if(isshowcomment===true){
+            setcurrentcomment({
+                description:'',
+                profileId:'',
+                postId:''
+            })
+        }
         setisshowcomment(!isshowcomment);
+
     }
     const showreportoptionHandler = () => {
         if (props.flagged === false)
@@ -182,8 +190,8 @@ const Feed = (props) => {
                 </div>
                 <hr></hr>
                 <div className={classes.btn_container}>
-                    <button type="button" onClick={likeHandler} className={classes.like_btn}><i className={likeon === true ? ["far", "fa-thumbs-up", classes.islikedpost].join(' ') : ["far", "fa-thumbs-up"].join(' ')}></i><span>Like</span></button>
-                    <button type="button" onClick={dislikeHandler} className={classes.dislike_btn}><i className={dislikeon === true ? ["fas", "fa-heart-broken", classes.islikedpost].join(' ') : ["fas", "fa-heart-broken"].join(' ')} ></i><span>Dislike</span></button>
+                    <button type="button" onClick={likeHandler} disabled={props.flagged} className={classes.like_btn}><i className={likeon === true ? ["fas", "fa-thumbs-up", classes.islikedpost].join(' ') : ["fas", "fa-thumbs-up"].join(' ')}></i><span>Like</span></button>
+                    <button type="button" onClick={dislikeHandler} disabled={props.flagged} className={classes.dislike_btn}><i className={dislikeon === true ? ["fas", "fa-heart-broken", classes.isdislikedpost].join(' ') : ["fas", "fa-heart-broken"].join(' ')} ></i><span>Dislike</span></button>
                     <button type="button" onClick={commentHandler} className={classes.comment_btn}><i className="far fa-comment-alt"></i><span>Comment</span></button>
                 </div>
                 <hr></hr>

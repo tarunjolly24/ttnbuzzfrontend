@@ -1,8 +1,17 @@
 import classes from './displaycard.module.css';
-import React from 'react';
+import axios from '../../axios-instance';
+import React, { useEffect,useState } from 'react';
 import { connect } from 'react-redux';
 
 const Displaycard=(props)=>{
+    const [postcount,setpostcount]=useState(0);
+    useEffect(()=>{
+        axios.get('/post/postcount')
+        .then((res)=>{
+            // console.log(res.data.response);
+            setpostcount(res.data.response);
+        })
+    },[])
     return(
         <React.Fragment>
             <div className={classes.display_container}>
@@ -23,7 +32,7 @@ const Displaycard=(props)=>{
                         <p className={classes.post_profile}>Profile Views</p>
                     </div>
                     <div className={classes.flex_two}>
-                        <p>10</p>
+                        <p>{postcount}</p>
                         <p className={classes.post_profile}>Post</p>
                     </div>
                 </div>

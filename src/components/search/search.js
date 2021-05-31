@@ -62,7 +62,7 @@ const Search = (props) => {
             <div className={classes.search_container}>
                 <div className={classes.search_container_flex}>
                     <div className={classes.flex_con_one}>
-                        <img className={classes.user_image} src="./images/user.jpeg" alt="user"></img>
+                        <img className={classes.user_image} src={props.userDetails!==null?props.userDetails.profileImage:''} alt="user"></img>
                     </div>
                     <div className={classes.flex_con_two}>
                         <input className={classes.search_bar} type="text" placeholder="Start a post..." onChange={(e)=>postHandler(e,"text")} value={newpost.description} ></input>
@@ -78,6 +78,11 @@ const Search = (props) => {
     )
 }
 
+const mapStateToProps=(state)=>{
+    return{
+        userDetails:state.auth.userDetails
+    }
+}
 
 const mapDispatchToProps=(dispatch)=>{
     return{
@@ -85,4 +90,4 @@ const mapDispatchToProps=(dispatch)=>{
     }
 }
 
-export default  connect(null,mapDispatchToProps)(Search);
+export default  connect(mapStateToProps,mapDispatchToProps)(Search);
