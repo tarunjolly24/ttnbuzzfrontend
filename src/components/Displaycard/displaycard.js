@@ -14,7 +14,7 @@ const Displaycard=(props)=>{
                 </div>
                 <div className={classes.text_con}>
                     <h5>{props.userDetails!==null?props.userDetails.firstName +" "+props.userDetails.lastName:''}</h5>
-                    <p>{props.userDetails!=null?(props.userDetails.designation===''?'':props.userDetails.designation+"at TTN"):''}</p>
+                    <p>{props.userDetails!=null?(props.userDetails.designation===''?'':props.userDetails.designation+" at TTN"):''}</p>
                     
                 </div>
                 <div className={classes.flex_con}>

@@ -46,6 +46,10 @@ export const getProfile=function(profileId){
                 friendsList:res.data.friendsList,
                 requestList:res.data.requestList,
                 requestSent:res.data.requestSent,
+                role:res.data.role,
+                profileCount:res.data.profileCount,
+                designation:res.data.designation===undefined?'':res.data.designation,
+                website:res.data.website===undefined?'':res.data.website
             }
             dispatch(getProfileSuccess(obj));
 

@@ -24,6 +24,10 @@ const Myprofile = (props) => {
         friendsList:[],
         requestList:[],
         requestSent:[],
+        designation:'',
+        website:'',
+        about:''
+
     });
     
     // console.log(mydetails);
@@ -68,7 +72,15 @@ const Myprofile = (props) => {
             case 'state':
                 setmydetails({...mydetails,state:event.target.value});
                 break;
-                
+            case 'designation':
+                setmydetails({...mydetails,designation:event.target.value});
+                break;
+            case 'website':
+                setmydetails({...mydetails,website:event.target.value});
+                break;
+            case 'about':
+                setmydetails({...mydetails,about:event.target.value});
+                break;
             default:
                 break;
         }
@@ -145,6 +157,25 @@ const Myprofile = (props) => {
                     <input type="text" className="form-control py-3" id="inputlastname" placeholder="Last Name" value={mydetails.lastName} onChange={e=>inputChangeHandler(e,'lastName')}  ></input>
                 </div>
             </div>
+            <div className="row mb-4">
+                <div className="form-group col-md-8">
+                    <label htmlFor="about">About</label>
+                    {/* {console.log(mydetails.firstName)} */}
+                    <input type="text" className="form-control py-3" id="about" placeholder="About" value={mydetails.about}  onChange={e=>inputChangeHandler(e,'about')} ></input>
+                </div>
+            </div>
+            <div className="row mb-4">
+                <div className="form-group col-md-4">
+                    <label htmlFor="designation">Designation</label>
+                    {/* {console.log(mydetails.firstName)} */}
+                    <input type="text" className="form-control py-3" id="designation" placeholder="Designation" value={mydetails.designation}  onChange={e=>inputChangeHandler(e,'designation')} ></input>
+                </div>
+                <div className="form-group col-md-4">
+                    <label htmlFor="website">Website</label>
+                    <input type="text" className="form-control py-3" id="website" placeholder="Website" value={mydetails.website} onChange={e=>inputChangeHandler(e,'website')}  ></input>
+                </div>
+            </div>
+            
             <div className="row mb-4">
                 <div className="form-group col-md-4">
                     <label htmlFor="inputdob">DOB</label>
