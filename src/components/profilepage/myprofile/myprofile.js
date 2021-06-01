@@ -7,6 +7,9 @@ import { connect } from 'react-redux';
 import axios from '../../../axios-instance';
 import { withRouter } from 'react-router';
 import Otherprofile from '../otherprofile/otherprofile';
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Myprofile = (props) => {
     console.log(props);
     console.log(props.match.params.id);
@@ -89,11 +92,13 @@ const Myprofile = (props) => {
     }
     const saveDetailHandler=(e)=>{
         e.preventDefault();
+        toast.success("Details Saved", { position: toast.POSITION.TOP_RIGHT, autoClose: 1500, classOnClick: true, style: { backgroundColor: '#a2ded0', fontWeight: 'bold' } })
+
         //api request to update the details
         axios.post('/profile/userprofileupdate',{updatedDetails:mydetails})
         .then((res)=>{
             console.log(res);
-            alert('info updated')
+            
         })
     }
     const resetHandler=()=>{

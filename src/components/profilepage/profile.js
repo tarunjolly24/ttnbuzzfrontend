@@ -28,11 +28,11 @@ const Profile = (props) => {
             <Navbar></Navbar>
             <div className={classes.profile_page_container}>
                 <div className="row">
-                    <div className="col-9">
+                    <div className="col-12  col-sm-12 col-md-12 col-lg-9 col-xl-9">
                         <Myprofile></Myprofile>
                         
                     </div>
-                    <div className="col-3">
+                    <div className="col-12  col-sm-12 col-md-12 col-lg-3 col-xl-3">
                         <Suggestions></Suggestions>
 
                     </div>

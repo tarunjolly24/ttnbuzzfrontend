@@ -2,14 +2,20 @@ import axios from '../../../axios-instance';
 import React from 'react';
 import { connect } from 'react-redux';
 import classes from './otherprofile.module.css';
+import {  toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Otherprofile = (props) => {
     console.log(props)
     const { showDetails } = props;
     
     const removeFriendHandler = (requestprofileId) => {
+        toast.success("Friend Removed", { position: toast.POSITION.TOP_RIGHT, autoClose: 1500, classOnClick: true, style: { backgroundColor: '#4D99FD', fontWeight: 'bold' } })
 
     }
     const acceptFriendHandler = (requestprofileId) => {
+        toast.success("Request Accepted", { position: toast.POSITION.TOP_RIGHT, autoClose: 1500, classOnClick: true, style: { backgroundColor: '#4D99FD', fontWeight: 'bold' } })
+
         axios.post('/friends/acceptrequest', { receiverProfileId: requestprofileId })
             .then((response) => {
                 console.log(response);
@@ -17,6 +23,8 @@ const Otherprofile = (props) => {
             })
     }
     const rejectFriendHandler = (requestprofileId) => {
+        toast.success("Request Rejected", { position: toast.POSITION.TOP_RIGHT, autoClose: 1500, classOnClick: true, style: { backgroundColor: '#4D99FD', fontWeight: 'bold' } })
+
         axios.post('/friends/rejectrequest', { receiverProfileId: requestprofileId })
             .then((response) => {
                 console.log(response);
@@ -24,10 +32,12 @@ const Otherprofile = (props) => {
             })
     }
     const addfriendHandler=(requestprofileId)=>{
+        toast.success("Request Sent", { position: toast.POSITION.TOP_RIGHT, autoClose: 1500, classOnClick: true, style: { backgroundColor: '#4D99FD', fontWeight: 'bold' } })
+        
         axios.post('/friends/sentrequest',{receiverProfileId:requestprofileId})
         .then((response)=>{
             console.log(response);
-            alert("Request Sent");
+            
         })
     }
     // {debugger}

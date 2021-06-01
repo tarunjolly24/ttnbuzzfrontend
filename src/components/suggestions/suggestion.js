@@ -2,6 +2,9 @@ import classes from './suggestion.module.css';
 import Usersuggestion from './usersuggestion/usersuggestion';
 import React, { useEffect, useState } from 'react';
 import axios from '../../axios-instance';
+import { ToastContainer, toast } from 'react-toastify';    
+import 'react-toastify/dist/ReactToastify.css';    
+
 
 const Suggestions = (props) => {
     const [inputShow, setinputshow] = useState(false);
@@ -34,7 +37,9 @@ const Suggestions = (props) => {
 
     const addfriendHandler = (receiverProfileId) => {
         //action dispatch
-        axios.post('http://localhost:5000/friends/sentrequest', { receiverProfileId: receiverProfileId })
+        toast.success("Request Sent", { position: toast.POSITION.TOP_RIGHT,autoClose:1500,classOnClick:true,style:{backgroundColor:'#4D99FD'} })
+
+        axios.post('/friends/sentrequest', { receiverProfileId: receiverProfileId })
             .then((res) => {
                 // console.log(res);
                 const arr = suggestions.filter((item) => {
@@ -88,6 +93,8 @@ const Suggestions = (props) => {
                 <Usersuggestion></Usersuggestion> */}
                 {suggest}
             </div>
+            <ToastContainer />
+
         </div>
     )
 

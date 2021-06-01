@@ -50,3 +50,25 @@
     text-decoration: none;
     color:#F095BE;
 }
+
+@media only screen and (max-width:768px){
+    .google_container{
+        width:100%;
+        /* margin: auto;  */
+     
+        height:100vh;
+        box-shadow: 0 1px 12px 8px rgba(0, 0, 0, 0.1);
+        /* max-width: calc(100%); */
+        /* text-align: center; */
+    }
+    .google_image{
+        display: block;
+        
+        margin:0 auto;
+        margin-top:20px ;
+        width: 40%;
+        height: 40%;
+    
+    }
+    
+}

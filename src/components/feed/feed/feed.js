@@ -6,6 +6,9 @@ import axios from '../../../axios-instance';
 import { connect } from 'react-redux';
 import * as action from '../../../store/action/index';
 import Moment from 'react-moment'
+import { ToastContainer, toast } from 'react-toastify';    
+import 'react-toastify/dist/ReactToastify.css';    
+
 const Feed = (props) => {
     // console.log(props.comment);
     const [likeon, setlikeon] = useState(false);
@@ -67,7 +70,7 @@ const Feed = (props) => {
     }
     const reportPostHandler = (event, postId) => {
         event.stopPropagation();//no use
-
+        toast.success("Post Have Been Reported", { position: toast.POSITION.TOP_RIGHT,autoClose:1500,classOnClick:true,style:{backgroundColor:'red'} })
         axios.post('/post/flagpost', { postId: postId })
             .then((res) => {
                 // console.log(res);
@@ -81,6 +84,7 @@ const Feed = (props) => {
     }
 
     const unflagpostHandler = (postId) => {
+        toast.success("Post Have Been Approved", { position: toast.POSITION.TOP_RIGHT,autoClose:1500,classOnClick:true,style:{backgroundColor:'green'} })
         axios.post('/post/unflagpost', { postId: postId })
             .then((res) => {
                 // console.log(res);
@@ -93,6 +97,8 @@ const Feed = (props) => {
     }
 
     const deletepostHandler = (postId) => {
+        toast.success("Post Have Been Deleted", { position: toast.POSITION.TOP_RIGHT,autoClose:1500,classOnClick:true,style:{backgroundColor:'red'} })
+
         axios.post('/post/deletepost', { postId: postId })
             .then((res) => {
                 // console.log(res);
@@ -198,6 +204,7 @@ const Feed = (props) => {
                 {/* {console.log("array of comments", props.arrayOfComment)} */}
                 {showcommentcomponent}
                 {addcommentcomponent}
+                <ToastContainer />
 
 
 

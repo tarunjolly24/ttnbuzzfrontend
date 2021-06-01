@@ -42,12 +42,12 @@ const Home = (props) => {
                 <Navbar></Navbar>
                 <div className="container-fluid" style={{ width:'95%',margin:'auto',marginTop:'40px' }} >
                     <div className="row">
-                        <div className="col-3">
+                        <div className="col-12  col-sm-12 col-md-12 col-lg-3 col-xl-3">
                             <Displaycard></Displaycard>
                             <Recent></Recent>
                         </div>
 
-                        <div className="col-6">
+                        <div className="col-12  col-sm-12 col-md-12 col-lg-6 col-xl-6">
                             <Search></Search>
                             <div className={classes.blabla}>
                                 <div>Sort by <strong>Top</strong><i className="fas fa-sort-down"></i></div>
@@ -63,7 +63,7 @@ const Home = (props) => {
 
                         </div>
 
-                        <div className="col-3">
+                        <div className="col-12  col-sm-12 col-md-12 col-lg-3 col-xl-3">
                             <Contact></Contact>
                             <Suggestions></Suggestions>
 

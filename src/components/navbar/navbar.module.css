@@ -12,15 +12,16 @@
 }
 
 .user_icon{
-    padding: 10px;
+    padding: 9px ;
     background-color: #E4E6EB;
     border-radius: 50%;
     /* margin: 0 5px; */
     margin-left: 5px;
+    margin-right: 10px;
 }
 
 .chat_icon{
-    padding: 10px;
+    padding: 9px 12px;
     background-color: #E4E6EB;
     border-radius: 50%;
     margin: 0 5px;
@@ -50,6 +51,7 @@
     position: absolute;
     width: 150px;
     display: flex;
+    right:0;
     flex-direction: column;
     
 }
@@ -70,3 +72,50 @@
     border: none;
     background: none;
 }
+
+@media only screen and (max-width: 425px) {
+    .navbar_right_side{
+        /* float: right; */
+        float: none;
+        padding:8px 0px;   
+        text-align: center;
+        /* display: flex; */
+    }
+    .navbar_logo{
+
+        text-align: center;
+    }
+    .img_div{
+        text-align: center;
+    }
+    .display_container{
+        right: 100px;
+
+    }
+    .fluid_con{
+        padding-right: -10px;
+    }
+    
+
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar_right_side{
+        /* float: right; */
+        float: none;
+        padding:8px 0px;   
+        text-align: center;
+        /* display: flex; */
+    }
+    .navbar_logo{
+
+        text-align: center;
+    }
+    .img_div{
+        text-align: center;
+    }
+    
+  
+
+}
+  

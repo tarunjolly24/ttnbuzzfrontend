@@ -3,8 +3,8 @@ import axios from 'axios';
 const instance= axios.create({
     // baseURL:'http://localhost:5000/'
 
-    // baseURL:'https://ttnbuzzbackend.el.r.appspot.com/'
-    baseURL:`${process.env.REACT_APP_API_URL.trim()}`
+    baseURL:'https://ttnbuzzapp.herokuapp.com'
+    // baseURL:`${process.env.NODE_ENV==="development"?process.env.REACT_APP_API_URL:process.env.REACT_APP_API_URL_HEROKU}`
 })
 
 instance.interceptors.request.use(config => {
