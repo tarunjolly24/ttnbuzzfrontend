@@ -31,7 +31,7 @@ export const getProfile=function(profileId){
         axios.get(`/profile/anyuserprofile?profileId=${profileId}`)
         .then((res)=>{
             //success
-            console.log('response of profile',res);
+            // console.log('response of profile',res);
             let obj={
                 _id:res.data._id,
                 firstName:res.data.firstName,

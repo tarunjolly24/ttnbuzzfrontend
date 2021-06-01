@@ -38,17 +38,17 @@ export const getPost=(page)=>{
 
         // if(page===0)dispatch(pagezeroaction());
         dispatch(getpoststart());
-        console.log(page);
+        // console.log(page);
         axios.get(`/post/getallpost?page=${page}`)
         .then((response)=>{
-            console.log(response.data);
+            // console.log(response.data);
             if(response.data.length>0)
             dispatch(getpostsuccess(response.data));
             else
             dispatch(setFetchMorePost());
         })
         .catch((err)=>{
-            console.log(err);
+            // console.log(err);
             dispatch(getpostfailure());
         })
     }
@@ -78,7 +78,7 @@ export const createpostfailure=()=>{
 
 
 export const createpostsuccess=(data)=>{
-    console.log(data);
+    // console.log(data);
     return{
         type:actiontypes.CREATE_POST_SUCCESS,
         payload:data
@@ -87,7 +87,7 @@ export const createpostsuccess=(data)=>{
 
 export const createPost=(formdata)=>{
     return (dispatch)=>{
-        console.log('dispatch post')
+        // console.log('dispatch post')
         dispatch(createpoststart());
         axios.post('/post/createpost',formdata,{
             headers: {
@@ -96,7 +96,7 @@ export const createPost=(formdata)=>{
               }
         })
         .then((response)=>{
-            console.log(response.data);
+            // console.log(response.data);
             response.data.comment=[];
             dispatch(createpostsuccess(response.data));
         })

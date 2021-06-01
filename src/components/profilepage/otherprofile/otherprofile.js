@@ -1,5 +1,5 @@
 import axios from '../../../axios-instance';
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import classes from './otherprofile.module.css';
 import {  toast } from 'react-toastify';
@@ -7,19 +7,25 @@ import 'react-toastify/dist/ReactToastify.css';
 
 const Otherprofile = (props) => {
     console.log(props)
+    const [buttondisable,setbuttondisable]=useState(false);
     const { showDetails } = props;
     
     const removeFriendHandler = (requestprofileId) => {
+        // console.log(requestprofileId);
         toast.success("Friend Removed", { position: toast.POSITION.TOP_RIGHT, autoClose: 1500, classOnClick: true, style: { backgroundColor: '#4D99FD', fontWeight: 'bold' } })
+        axios.post('/friends/removefriend',{ receiverProfileId: requestprofileId })
+        .then((res)=>{
+            // console.log(res);
 
+        })
     }
     const acceptFriendHandler = (requestprofileId) => {
         toast.success("Request Accepted", { position: toast.POSITION.TOP_RIGHT, autoClose: 1500, classOnClick: true, style: { backgroundColor: '#4D99FD', fontWeight: 'bold' } })
 
         axios.post('/friends/acceptrequest', { receiverProfileId: requestprofileId })
             .then((response) => {
-                console.log(response);
-                alert("Friend Request Accepted")
+                // console.log(response);
+                // alert("Friend Request Accepted")
             })
     }
     const rejectFriendHandler = (requestprofileId) => {
@@ -27,16 +33,16 @@ const Otherprofile = (props) => {
 
         axios.post('/friends/rejectrequest', { receiverProfileId: requestprofileId })
             .then((response) => {
-                console.log(response);
-                alert("Friend Request Rejected");
+                // console.log(response);
+                // alert("Friend Request Rejected");
             })
     }
     const addfriendHandler=(requestprofileId)=>{
         toast.success("Request Sent", { position: toast.POSITION.TOP_RIGHT, autoClose: 1500, classOnClick: true, style: { backgroundColor: '#4D99FD', fontWeight: 'bold' } })
-        
+        setbuttondisable(true);
         axios.post('/friends/sentrequest',{receiverProfileId:requestprofileId})
         .then((response)=>{
-            console.log(response);
+            // console.log(response);
             
         })
     }
@@ -60,7 +66,7 @@ const Otherprofile = (props) => {
             )
         } else {
             button = (
-                <button className={classes.friend_btn} type="button" onClick={()=>addfriendHandler(showDetails._id)} > <i class="fas fa-user-plus"></i> Add Friend</button>
+                <button  disabled={buttondisable} className={classes.friend_btn} type="button" onClick={()=>addfriendHandler(showDetails._id)} > <i class="fas fa-user-plus"></i> Add Friend</button>
             )
         }
     }

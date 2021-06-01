@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import classes from './addcomment.module.css';
 import * as action from '../../../../store/action/index'
 const Addcomment = (props) => {
-    console.log(props.postid)
+    // console.log(props.postid)
     const [com,setcom]=useState({
         description:''
     });
@@ -20,7 +20,7 @@ const Addcomment = (props) => {
             profileId:props.userDetails,
             createdOn:new Date()
         });
-        console.log('action fired oncreatecomment')
+        // console.log('action fired oncreatecomment')
         props.oncreateComment(data);
         
         setcom({
@@ -29,7 +29,7 @@ const Addcomment = (props) => {
         // console.log(props.postid,com);
     }
     const commentHandler=(e)=>{
-        console.log(e.target.value)
+        // console.log(e.target.value)
         setcom({
             description:e.target.value,
         })

@@ -21,7 +21,7 @@ const Allfeed = (props) => {
     const {pagezeroaction}=props;
     useEffect(()=>{
         return ()=>{
-            console.log("all feed component unmount");
+            // console.log("all feed component unmount");
             pagezeroaction();
         
         }
@@ -35,11 +35,11 @@ const Allfeed = (props) => {
 
     const { flagged } = props;
     useEffect(() => {
-        console.log(flagged);
+        // console.log(flagged);
         if (flagged === true) {
             axios.get('/post/getflagpost')
                 .then((res) => {
-                    console.log(res.data);
+                    // console.log(res.data);
                     // setfeed([]);
                     setfeed(res.data);
                     // debugger
@@ -52,7 +52,7 @@ const Allfeed = (props) => {
             
         }
     }, [flagged,allpost,ongetPost])
-    console.log(feed)
+    // console.log(feed)
     // debugger
     const loadMoreHandler=()=>{
         if(props.fetchMorePost){
@@ -112,7 +112,8 @@ const mapStateToProps = (state) => {
     return {
 
         allpost: state.post.posts,
-        fetchMorePost:state.post.fetchMorePost
+        fetchMorePost:state.post.fetchMorePost,
+        allpostloading:state.post.loading
     }
 }
 

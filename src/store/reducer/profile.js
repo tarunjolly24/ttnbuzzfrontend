@@ -14,7 +14,7 @@ const getProfileSuccess=(state,action)=>{
     }
 } 
 const getProfileStart=(state,action)=>{
-    console.log(action.type);
+    // console.log(action.type);
     return{
         ...state,
         loading:true,

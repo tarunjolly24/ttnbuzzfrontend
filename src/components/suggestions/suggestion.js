@@ -17,7 +17,7 @@ const Suggestions = (props) => {
     useEffect(() => {
         axios.get("/friends/suggestions")
             .then((response) => {
-                console.log(response.data);
+                // console.log(response.data);
 
                 if (Object.keys(response.data).length !== 0)
                     setsuggestion(response.data);
@@ -25,7 +25,7 @@ const Suggestions = (props) => {
     }, [])
     const searchHandler = (e) => {
         const output = [];
-        console.log(e.target.value);
+        // console.log(e.target.value);
         for (let i = 0; i < suggestions.length; i++) {
             if (suggestions[i].firstName.toLowerCase().includes(e.target.value) === true || suggestions[i].lastName.toLowerCase().includes(e.target.value) === true) {
                 output.push(suggestions[i]);

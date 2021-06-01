@@ -45,12 +45,20 @@ const Showcomment = (props) => {
             minustwo=2;
         }
         axios.post('/comment/getpostcomment', { postId: postId, page: page, offset: offset,minustwo:minustwo }).then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             if (res.data.length<3) {
                 setmorecomment(false);
             }
             
-            const updatedCommentArr=[...statecomment,...res.data].sort((a,b)=>{
+            let updateResponse=[]
+            for(let i=0;i<statecomment.length && i<res.data.length;i++){
+                if(res.data[i]._id===statecomment[i]._id){
+                    continue;
+                }
+                updateResponse.push(res.data[i]);
+            }
+
+            const updatedCommentArr=[...statecomment,...updateResponse].sort((a,b)=>{
                 return b.createdOn-a.createdOn;
             })
             // setstatecomment([...statecomment, ...res.data]);

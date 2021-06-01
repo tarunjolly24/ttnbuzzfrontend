@@ -16,7 +16,7 @@ const Displaycard=(props)=>{
         <React.Fragment>
             <div className={classes.display_container}>
                 <div className={classes.cover_con} >
-                    <img  src={props.userDetails!=null?props.userDetails.coverImage:''} alt="cover"></img>
+                    <img  src={props.userDetails!=null?"https://res.cloudinary.com/ddcgdnhqp/image/upload/v1622472572/z4odkrmkajufrfpsujrw.png":''} alt="cover"></img>
                 </div>
                 <div className={classes.profile_con}>
                     <img src={props.userDetails!=null?props.userDetails.profileImage:''} alt="user"></img>
@@ -28,8 +28,8 @@ const Displaycard=(props)=>{
                 </div>
                 <div className={classes.flex_con}>
                     <div className={classes.flex_one}>
-                        <p>{props.userDetails!=null?props.userDetails.profileCount:0}</p>
-                        <p className={classes.post_profile}>Profile Views</p>
+                        <p>{props.userDetails!=null?props.userDetails.friendsList.length:0}</p>
+                        <p className={classes.post_profile}>My Friends</p>
                     </div>
                     <div className={classes.flex_two}>
                         <p>{postcount}</p>

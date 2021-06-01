@@ -2,13 +2,13 @@ import axios from '../../axios-instance';
 import * as actiontypes from './actiontypes';
 
 export const settoken=function(){
-    console.log('settoken called');
+    // console.log('settoken called');
     // console.log(localStorage.getItem('token'))
-    console.log(document.cookie);
+    // console.log(document.cookie);
     
 
     if(localStorage.getItem('token')===null || localStorage.getItem('token')==='' || localStorage.getItem('token')==='jwt='){
-        console.log(document.cookie);
+        // console.log(document.cookie);
         localStorage.setItem('token',document.cookie);
     }
     
@@ -19,7 +19,7 @@ export const settoken=function(){
         arr=arr.join('')
         localStorage.setItem('token',arr);
     }
-    console.log(document.cookie)
+    // console.log(document.cookie)
     
     return{
         type:'SET_TOKEN',
@@ -28,7 +28,7 @@ export const settoken=function(){
 }
 
 export const logout=function(){
-    console.log('logout called');
+    // console.log('logout called');
     localStorage.removeItem('token');
 
     return{
@@ -51,11 +51,11 @@ export const getUserDetailsSuccess=function(data){
 }
 
 export const getUserDetails=function(){
-    console.log("getUserDetails called");
+    // console.log("getUserDetails called");
     return (dispatch)=>{
         dispatch(getUserDetailsStart());
         axios({ method: 'GET', url: '/profile/userprofile' }).then((res) => {
-            console.log(res.data);
+            // console.log(res.data);
             let obj={
                 _id:res.data._id,
                 firstName:res.data.firstName,

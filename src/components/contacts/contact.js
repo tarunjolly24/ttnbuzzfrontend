@@ -11,10 +11,10 @@ const Contact = (props) => {
         setinputshow(!inputShow);
    }
    useEffect(()=>{
-       console.log('get all friends')
+    //    console.log('get all friends')
        axios.get("/friends/getallfriends")
        .then((response)=>{
-           console.log(response.data);
+        //    console.log(response.data);
            if(Object.keys(response.data).length!==0)
            setsuggestion(response.data);
        })
@@ -38,7 +38,7 @@ const Contact = (props) => {
 
    const searchHandler=(e)=>{
        const output=[];
-        console.log(e.target.value);
+        // console.log(e.target.value);
         for(let i=0;i<suggestions.length;i++){
             if(suggestions[i].firstName.toLowerCase().includes(e.target.value)===true ||  suggestions[i].lastName.toLowerCase().includes(e.target.value) === true){
                 output.push(suggestions[i]);

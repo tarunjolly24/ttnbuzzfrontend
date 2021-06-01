@@ -11,11 +11,11 @@ import { connect } from 'react-redux';
 
 const Home = (props) => {
     const [flagged, setflagged] = useState(false);
-    console.log(props);
+    // console.log(props);
 
     let moderator = null;
     const moderatorviewHandler = () => {
-        console.log(flagged);
+        // console.log(flagged);
 
         setflagged(!flagged);
         

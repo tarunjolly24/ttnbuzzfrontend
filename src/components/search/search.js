@@ -13,15 +13,15 @@ const Search = (props) => {
     });
     const postHandler = (event, name) => {
         var isValid = ['image/png', 'image/jpg', 'image/jpeg'];
-        console.log(event.target.value);
-        console.log(event.target.files);
+        // console.log(event.target.value);
+        // console.log(event.target.files);
         if (name === "text") {
             setnewpost({
                 ...newpost,
                 description: event.target.value
             })
         } else if (name === "file") {
-            console.log(event.target.files[0].type);
+            // console.log(event.target.files[0].type);
             if (isValid.indexOf(event.target.files[0].type) > -1 && event.target.files[0].size<5120000 ) {
                 setnewpost({
                     ...newpost,
@@ -34,7 +34,7 @@ const Search = (props) => {
             }
         }
 
-        console.log(newpost)
+        // console.log(newpost)
 
     }
     const createpostHandler = () => {

@@ -11,8 +11,8 @@ import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 const Myprofile = (props) => {
-    console.log(props);
-    console.log(props.match.params.id);
+    // console.log(props);
+    // console.log(props.match.params.id);
 
     const [mydetails, setmydetails] = useState({
         _id:'',
@@ -38,7 +38,7 @@ const Myprofile = (props) => {
     // console.log(props.userdetails);
     let {getProfile,userdetails,profiledetails,match}=props;
     useEffect(()=>{
-        console.log(match.params.id);
+        // console.log(match.params.id);
         getProfile(match.params.id);
     },[getProfile,match]);
 
@@ -53,7 +53,7 @@ const Myprofile = (props) => {
     
     
     const inputChangeHandler=(event,name)=>{
-        console.log(event.target.value);
+        // console.log(event.target.value);
         switch(name){
             case 'firstName':
                 setmydetails({...mydetails,firstName:event.target.value});
@@ -97,7 +97,7 @@ const Myprofile = (props) => {
         //api request to update the details
         axios.post('/profile/userprofileupdate',{updatedDetails:mydetails})
         .then((res)=>{
-            console.log(res);
+            // console.log(res);
             
         })
     }
@@ -108,8 +108,8 @@ const Myprofile = (props) => {
         // e.preventDefault();
         
         const files=Array.from(e.target.files);
-        console.log(e.target.files[0]);
-        console.log(files);
+        // console.log(e.target.files[0]);
+        // console.log(files);
         const formdata = new FormData()
         // const types = ['image/png', 'image/jpeg', 'image/gif']
 
@@ -119,7 +119,7 @@ const Myprofile = (props) => {
     // console.log(typeof formdata)
     // formdata.append("text","dfhgsdjf");
     // console.log(formdata);
-        console.log(formdata);
+        // console.log(formdata);
         axios.post('/profile/image-upload',formdata, {
             headers: {
                 'Accept': 'application/json',
@@ -127,7 +127,7 @@ const Myprofile = (props) => {
             }
         })
         .then(response=>{
-            console.log(response);
+            // console.log(response);
         })
 
 
@@ -136,13 +136,13 @@ const Myprofile = (props) => {
     let addImage=null;
 
     let form =null;
-    console.log(props);
+    // console.log(props);
     if(props.loading===false && props.profiledetails!==null){
-        console.log('userdetails._id',userdetails._id);
+        // console.log('userdetails._id',userdetails._id);
         let a=userdetails._id;
         let b=props.profiledetails._id;
-        console.log('props.profiledetails._id',props.profiledetails._id);
-        console.log(a===b)
+        // console.log('props.profiledetails._id',props.profiledetails._id);
+        // console.log(a===b)
         if(a===b){
             addImage=(
                 <form className={classes.input_image}>
@@ -155,7 +155,7 @@ const Myprofile = (props) => {
             <div className="row mb-4">
                 <div className="form-group col-md-4">
                     <label htmlFor="inputfirstname">First Name</label>
-                    {console.log(mydetails.firstName)}
+                    {/* {console.log(mydetails.firstName)} */}
                     <input type="text" className="form-control py-3" id="inputfirstname" placeholder="First Name" value={mydetails.firstName}  onChange={e=>inputChangeHandler(e,'firstName')} ></input>
                 </div>
                 <div className="form-group col-md-4">
@@ -215,7 +215,7 @@ const Myprofile = (props) => {
     }else if(a!==b){
         //different component
         //display other profile
-        console.log("other compoent")
+        // console.log("other compoent")
        form=<Otherprofile showDetails={mydetails}></Otherprofile>
         }
     }
@@ -226,10 +226,10 @@ const Myprofile = (props) => {
         <div className={classes.userprofilecontainer}>
             <div>
                 <div className={classes.cover_img_con}>
-                    <img className={classes.cover_img} src={mydetails.coverImage===''?'https://res.cloudinary.com/ddcgdnhqp/image/upload/v1621517683/hijkapix5ybrnjpwy5nr.jpg':mydetails.coverImage} alt="cover"></img>
+                    <img className={classes.cover_img} src={mydetails.coverImage===''?'https://res.cloudinary.com/ddcgdnhqp/image/upload/v1622472572/z4odkrmkajufrfpsujrw.png':mydetails.coverImage} alt="cover"></img>
                 </div>
                 <div className={classes.profile_img_con}>
-                    <img className={classes.profile_img} src={mydetails.profileImage===''?'https://res.cloudinary.com/ddcgdnhqp/image/upload/v1621521549/pv5ujsrzwgqqdfh3hcv1.jpg':mydetails.profileImage} alt="profile"></img>
+                    <img className={classes.profile_img} src={mydetails.profileImage===''?'https://res.cloudinary.com/ddcgdnhqp/image/upload/v1622316839/td2gxvbrf1yli5e6yifr.jpg':mydetails.profileImage} alt="profile"></img>
                     {addImage}
                 </div>
             </div>

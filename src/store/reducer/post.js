@@ -96,10 +96,10 @@ const unlikepost=(state,action)=>{
 
     for(let i=0;i<state.posts.length;i++){
         if(postId===state.posts[i]._id){
-            console.log(String(profileId));
-            console.log(state.posts[i].likes)
+            // console.log(String(profileId));
+            // console.log(state.posts[i].likes)
             let idx=state.posts[i].likes.indexOf(String(profileId));
-            console.log(idx);
+            // console.log(idx);
             if(idx>-1){
                 
                 state.posts[i].likes.splice(idx,1);

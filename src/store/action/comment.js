@@ -31,7 +31,7 @@ export const getComment=()=>{
         dispatch(getcommentstart());
         axios.get('/comment/getallcomment')
         .then((response)=>{
-            console.log(response.data);
+            // console.log(response.data);
             dispatch(getcommentsuccess(response.data));
         })
         .catch(()=>{
@@ -72,7 +72,7 @@ export const createComment=(data)=>{
            
         })
         .then((response)=>{
-            console.log(response.data);
+            // console.log(response.data);
             dispatch(createcommentsuccess(response.data));
         })
         .catch(()=>{

@@ -2,8 +2,8 @@ import React from 'react';
 import classes from './googlesignin.module.css';
 require('dotenv').config();
 const googlesignin=(props)=>{
-    console.log(process.env.REACT_APP_API_URL);
-    console.log(process.env);
+    // console.log(process.env.REACT_APP_API_URL);
+    // console.log(process.env);
     return(
         <React.Fragment>
           <div className={classes.google_container}>
