@@ -29,4 +29,8 @@ export {
     settoken,
     logout,
     getUserDetails,
+    removeFriendAction,
+    addFriendAction,
+    rejectFriendAction,
+    acceptFriendAction
 } from './auth';

@@ -9,6 +9,7 @@ import { withRouter } from 'react-router';
 import Otherprofile from '../otherprofile/otherprofile';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Spinner from '../../Spinner/spinner';
 
 const Myprofile = (props) => {
     // console.log(props);
@@ -104,9 +105,9 @@ const Myprofile = (props) => {
     const resetHandler=()=>{
         setmydetails(props.profiledetails);
     }
-    const imageChangeHandler=(e)=>{
+    const imageChangeHandler=(e,name)=>{
         // e.preventDefault();
-        
+        console.log(e,name);
         const files=Array.from(e.target.files);
         // console.log(e.target.files[0]);
         // console.log(files);
@@ -120,20 +121,35 @@ const Myprofile = (props) => {
     // formdata.append("text","dfhgsdjf");
     // console.log(formdata);
         // console.log(formdata);
-        axios.post('/profile/image-upload',formdata, {
-            headers: {
-                'Accept': 'application/json',
-              'Content-Type': 'multipart/form-data'
-            }
-        })
-        .then(response=>{
-            // console.log(response);
-        })
+        if(name==='profileImage'){
+
+            axios.post('/profile/image-upload',formdata, {
+                headers: {
+                    'Accept': 'application/json',
+                  'Content-Type': 'multipart/form-data'
+                }
+            })
+            .then(response=>{
+                // console.log(response);
+            })
+        }else if(name==="coverImage"){
+            axios.post('/profile/image-upload-coverImage',formdata, {
+                headers: {
+                    'Accept': 'application/json',
+                  'Content-Type': 'multipart/form-data'
+                }
+            })
+            .then(response=>{
+                // console.log(response);
+            })
+        }
 
 
 
     }
+    let mainprofilepage=null;
     let addImage=null;
+    let coverImage=null;
 
     let form =null;
     // console.log(props);
@@ -147,7 +163,13 @@ const Myprofile = (props) => {
             addImage=(
                 <form className={classes.input_image}>
                         <label htmlFor="files" className="btn"><i className="fas  fa-camera fa-2x"></i></label>
-                        <input id="files" style={{ visibility: 'hidden' }} onChange={(e)=>imageChangeHandler(e)} type="file"></input>
+                        <input id="files" style={{ visibility: 'hidden' }} onChange={(e)=>imageChangeHandler(e,'profileImage')} type="file"></input>
+                    </form>
+            )
+            coverImage=(
+                <form className={classes.input_image_cover}>
+                        <label htmlFor="filescover" className="btn"><i className="fas  fa-camera fa"></i></label>
+                        <input id="filescover" style={{visibility:'hidden'}} type="file" onChange={(e)=>imageChangeHandler(e,'coverImage')}></input>
                     </form>
             )
         form=(
@@ -218,15 +240,19 @@ const Myprofile = (props) => {
         // console.log("other compoent")
        form=<Otherprofile showDetails={mydetails}></Otherprofile>
         }
+    }else if(props.loading===true){
+        mainprofilepage=(
+            <Spinner></Spinner>
+        )
     }
 
-
-
-    return (
-        <div className={classes.userprofilecontainer}>
+    if(props.loading===false){
+        mainprofilepage=(
+            <div className={classes.userprofilecontainer}>
             <div>
                 <div className={classes.cover_img_con}>
                     <img className={classes.cover_img} src={mydetails.coverImage===''?'https://res.cloudinary.com/ddcgdnhqp/image/upload/v1622472572/z4odkrmkajufrfpsujrw.png':mydetails.coverImage} alt="cover"></img>
+                    {coverImage}
                 </div>
                 <div className={classes.profile_img_con}>
                     <img className={classes.profile_img} src={mydetails.profileImage===''?'https://res.cloudinary.com/ddcgdnhqp/image/upload/v1622316839/td2gxvbrf1yli5e6yifr.jpg':mydetails.profileImage} alt="profile"></img>
@@ -243,6 +269,15 @@ const Myprofile = (props) => {
 
 
         </div>
+        )
+    }
+
+
+
+    return (
+        <React.Fragment>
+            {mainprofilepage}
+        </React.Fragment>
     );
 }
 

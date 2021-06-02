@@ -4,6 +4,7 @@ import axios from '../../axios-instance';
 import { connect } from 'react-redux'
 import * as action from '../../store/action/index';
 import classes from './allfeed.module.css';
+import Spinner from '../Spinner/spinner';
 const Allfeed = (props) => {
     const [feed, setfeed] = useState([]);
     const [PageNumber,setPageNumber]=useState(0);
@@ -67,7 +68,13 @@ const Allfeed = (props) => {
         loadmorepostbtn=(
             <div style={{textAlign:'center'}} >All Post Are Loaded</div>
         )
-    }else{
+    }else if(props.allpostloading===true){
+        loadmorepostbtn=(
+            <Spinner></Spinner>
+        )
+
+    }
+    else{
         loadmorepostbtn=(
             <div className={classes.divloadmorebutton} ><button onClick={loadMoreHandler} className={classes.loadmorebutton}> Load More post</button></div>
 
@@ -99,6 +106,8 @@ const Allfeed = (props) => {
                 _id={post._id} createdOn={post.createdOn}  ></Feed>
         })
     }
+    
+
     return (
         <div>
             {feedArray}

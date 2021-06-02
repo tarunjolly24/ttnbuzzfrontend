@@ -80,3 +80,32 @@ export const getUserDetails=function(){
     }
     
 }
+
+
+export const removeFriendAction=function(profileId){
+    return {
+        type:"REMOVE_FRIEND",
+        payload:profileId
+    }
+}
+
+export const addFriendAction=function(profileId){
+    return{
+        type:'ADD_FRIEND',
+        payload:profileId
+    }
+}
+
+export const acceptFriendAction=function(profileId){
+    return{
+        type:'ACCEPT_FRIEND',
+        payload:profileId
+    }
+}
+
+export const rejectFriendAction=function(profileId){
+    return{
+        type:'REJECT_FRIEND',
+        payload:profileId
+    }
+}

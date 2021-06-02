@@ -4,15 +4,17 @@ import { connect } from 'react-redux';
 import classes from './otherprofile.module.css';
 import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
+import * as action from '../../../store/action/index';
 const Otherprofile = (props) => {
     console.log(props)
-    const [buttondisable,setbuttondisable]=useState(false);
+    const [addfriendbuttondisable,setaddfriendbuttondisable]=useState(false);
     const { showDetails } = props;
     
     const removeFriendHandler = (requestprofileId) => {
         // console.log(requestprofileId);
         toast.success("Friend Removed", { position: toast.POSITION.TOP_RIGHT, autoClose: 1500, classOnClick: true, style: { backgroundColor: '#4D99FD', fontWeight: 'bold' } })
+        //action dispatch to remove friend from reducer state
+        props.removeFriendAction(requestprofileId);
         axios.post('/friends/removefriend',{ receiverProfileId: requestprofileId })
         .then((res)=>{
             // console.log(res);
@@ -21,7 +23,7 @@ const Otherprofile = (props) => {
     }
     const acceptFriendHandler = (requestprofileId) => {
         toast.success("Request Accepted", { position: toast.POSITION.TOP_RIGHT, autoClose: 1500, classOnClick: true, style: { backgroundColor: '#4D99FD', fontWeight: 'bold' } })
-
+        props.acceptFriendAction(requestprofileId);
         axios.post('/friends/acceptrequest', { receiverProfileId: requestprofileId })
             .then((response) => {
                 // console.log(response);
@@ -30,6 +32,7 @@ const Otherprofile = (props) => {
     }
     const rejectFriendHandler = (requestprofileId) => {
         toast.success("Request Rejected", { position: toast.POSITION.TOP_RIGHT, autoClose: 1500, classOnClick: true, style: { backgroundColor: '#4D99FD', fontWeight: 'bold' } })
+        props.rejectFriendAction(requestprofileId);
 
         axios.post('/friends/rejectrequest', { receiverProfileId: requestprofileId })
             .then((response) => {
@@ -39,7 +42,9 @@ const Otherprofile = (props) => {
     }
     const addfriendHandler=(requestprofileId)=>{
         toast.success("Request Sent", { position: toast.POSITION.TOP_RIGHT, autoClose: 1500, classOnClick: true, style: { backgroundColor: '#4D99FD', fontWeight: 'bold' } })
-        setbuttondisable(true);
+        setaddfriendbuttondisable(true);
+        props.addFriendAction(requestprofileId);
+
         axios.post('/friends/sentrequest',{receiverProfileId:requestprofileId})
         .then((response)=>{
             // console.log(response);
@@ -66,7 +71,7 @@ const Otherprofile = (props) => {
             )
         } else {
             button = (
-                <button  disabled={buttondisable} className={classes.friend_btn} type="button" onClick={()=>addfriendHandler(showDetails._id)} > <i class="fas fa-user-plus"></i> Add Friend</button>
+                <button  disabled={addfriendbuttondisable} className={classes.friend_btn} type="button" onClick={()=>addfriendHandler(showDetails._id)} > <i class="fas fa-user-plus"></i> Add Friend</button>
             )
         }
     }
@@ -94,6 +99,15 @@ const Otherprofile = (props) => {
 
 }
 
+const mapDispatchToProps=(dispatch)=>{
+    return{
+        removeFriendAction:(requestprofileId)=>dispatch(action.removeFriendAction(requestprofileId)),
+        acceptFriendAction:(requestprofileId)=>dispatch(action.acceptFriendAction(requestprofileId)),
+        rejectFriendAction:(requestprofileId)=>dispatch(action.rejectFriendAction(requestprofileId)),
+        addFriendAction:(requestprofileId)=>dispatch(action.addFriendAction(requestprofileId))
+    }
+}
+
 const mapStateToProps = (state) => {
     return {
         userDetails: state.auth.userDetails,
@@ -101,4 +115,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(Otherprofile);
+export default connect(mapStateToProps,mapDispatchToProps)(Otherprofile);

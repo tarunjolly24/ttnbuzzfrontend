@@ -16,7 +16,7 @@ const Displaycard=(props)=>{
         <React.Fragment>
             <div className={classes.display_container}>
                 <div className={classes.cover_con} >
-                    <img  src={props.userDetails!=null?"https://res.cloudinary.com/ddcgdnhqp/image/upload/v1622472572/z4odkrmkajufrfpsujrw.png":''} alt="cover"></img>
+                    <img  src={props.userDetails!=null?props.userDetails.coverImage:'https://res.cloudinary.com/ddcgdnhqp/image/upload/v1622472572/z4odkrmkajufrfpsujrw.png'} alt="cover"></img>
                 </div>
                 <div className={classes.profile_con}>
                     <img src={props.userDetails!=null?props.userDetails.profileImage:''} alt="user"></img>

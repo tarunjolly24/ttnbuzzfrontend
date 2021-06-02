@@ -9,6 +9,7 @@
     border-top-right-radius: 12px;
     width:100%;
     height: auto;
+    position:relative;
 
 }
 .cover_img{
@@ -39,6 +40,22 @@
     color:#545871;
     position: absolute;
     left:170px;
+    bottom:0;
+    background-color: #fff;
+    
+}
+.input_image_cover{
+    position: absolute;
+    right: 0;
+    top:30px;
+}
+.input_image_cover i{
+    border: 1px solid #1977F3;
+    border-radius: 50%;
+    padding: 20px;
+    color:#545871;
+    position: absolute;
+    right:0;
     bottom:0;
     background-color: #fff;
     
