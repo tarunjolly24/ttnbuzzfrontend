@@ -52,12 +52,12 @@ const Suggestions = (props) => {
 
     let suggest = null;
     if (suggestions != null) {
-
+        console.log(suggestions);
         if (suggestions.length > 0) {
 
             suggest = suggestions.map((item) => {
 
-                return <Usersuggestion addfriend={item} addfriendHandler={addfriendHandler} ></Usersuggestion>
+                return <Usersuggestion key={item._id} addfriend={item} addfriendHandler={addfriendHandler} ></Usersuggestion>
             })
         }
 

@@ -43,22 +43,30 @@ const Showcomment = (props) => {
         let minustwo=0;
         if(comment.length===0){
             minustwo=2;
+        }else if(comment.length===1){
+            minustwo=2;
         }
         axios.post('/comment/getpostcomment', { postId: postId, page: page, offset: offset,minustwo:minustwo }).then((res) => {
-            // console.log(res.data);
+            console.log(res.data);
             if (res.data.length<3) {
                 setmorecomment(false);
             }
             
-            let updateResponse=[]
-            for(let i=0;i<statecomment.length && i<res.data.length;i++){
-                if(res.data[i]._id===statecomment[i]._id){
-                    continue;
+            // let updateResponse=[]
+            for(let i=0;i<statecomment.length;i++){
+                // if(res.data[i]._id===statecomment[i]._id){
+                //     continue;
+                // }
+                for(let j=0;j<res.data.length;j++){
+                    if(res.data[j]._id===statecomment[i]._id){
+                        res.data.splice(j,1);
+                        break;   
+                    }
                 }
-                updateResponse.push(res.data[i]);
+                // updateResponse.push(res.data[i]);
             }
 
-            const updatedCommentArr=[...statecomment,...updateResponse].sort((a,b)=>{
+            const updatedCommentArr=[...statecomment,...res.data].sort((a,b)=>{
                 return b.createdOn-a.createdOn;
             })
             // setstatecomment([...statecomment, ...res.data]);
@@ -71,7 +79,7 @@ const Showcomment = (props) => {
     let loadmorecommentbutton = null;
     if (morecomment) {
         loadmorecommentbutton = (
-            <button  onClick={bringMorePost} className={classes.loadmorecomment} ><i class="fas fa-chevron-down"></i> load comments </button>
+            <button  onClick={bringMorePost} className={classes.loadmorecomment} ><i className="fas fa-chevron-down"></i> load comments </button>
         )
     } else {
         loadmorecommentbutton = null;
@@ -87,7 +95,7 @@ const Showcomment = (props) => {
         showallcomment = statecomment.map((eachcomment) => {
             return (
 
-                <div className={classes.flex_con}>
+                <div key={eachcomment._id} className={classes.flex_con}>
                     <div className={classes.flex_one} >
                         <img className={classes.usercommentprofileimg} src={eachcomment.profileId.profileImage} alt={"alt"}></img>
                     </div>

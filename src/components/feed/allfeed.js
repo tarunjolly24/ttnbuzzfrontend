@@ -101,7 +101,7 @@ const Allfeed = (props) => {
                 }
             }
             // functionRemovePostFromStateOfFeed={removePostFromCurrentStateOffeed}
-            return <Feed comment={post.comment}  isLiked={isLiked} isdisLiked={isdisLiked} flagged={props.flagged} key={post._id} role={props.role} img={post.image} createdBy={post.createdBy} likes={post.likes.length}
+            return <Feed  comment={post.comment}  isLiked={isLiked} isdisLiked={isdisLiked} flagged={props.flagged} key={post._id} role={props.role} img={post.image} createdBy={post.createdBy} likes={post.likes.length}
                 dislikes={post.dislikes.length} description={post.description}
                 _id={post._id} createdOn={post.createdOn}  ></Feed>
         })

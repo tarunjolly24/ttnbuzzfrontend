@@ -85,7 +85,7 @@ const Search = (props) => {
                         <input id="files" style={{ display: 'none' }} type="file" onChange={(e) => postHandler(e, "file")}  ></input>
                         </div>
                     </div>
-                    <button className={classes.submitBtn} onClick={createpostHandler}><i class="fas fa-arrow-circle-right"></i></button>
+                    <button className={classes.submitBtn} onClick={createpostHandler}><i className="fas fa-arrow-circle-right"></i></button>
                 </div>
                 <ToastContainer />
             </div>

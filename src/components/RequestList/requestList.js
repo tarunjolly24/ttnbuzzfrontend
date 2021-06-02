@@ -42,7 +42,7 @@ const RequestList=(props)=>{
     if(allrequest.length!==0){
        requestlistcomponent=allrequest.map((eachrequest)=>{
         //    console.log(eachrequest);
-           return <Requestlistcomponent acceptRequestHandler={acceptRequestHandler} rejectRequestHandler={rejectRequestHandler} key={eachrequest._id} profileId={eachrequest._id} img={eachrequest.profileImage} firstName={eachrequest.firstName} lastName={eachrequest.lastName}  ></Requestlistcomponent> 
+           return <Requestlistcomponent  acceptRequestHandler={acceptRequestHandler} rejectRequestHandler={rejectRequestHandler} key={eachrequest._id} profileId={eachrequest._id} img={eachrequest.profileImage} firstName={eachrequest.firstName} lastName={eachrequest.lastName}  ></Requestlistcomponent> 
         
         })
     }

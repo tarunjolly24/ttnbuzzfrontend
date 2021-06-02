@@ -139,7 +139,7 @@ const Feed = (props) => {
     if (isshowreport && props.flagged !== true) {
         showreportoption = (
             <div onClick={(e) => reportPostHandler(e, props._id)} className={classes.reportdiv}>
-                <span><i class="fas fa-exclamation-circle"></i></span><span>Report</span>
+                <span><i className="fas fa-exclamation-circle"></i></span><span>Report</span>
             </div>
         )
     }
@@ -149,8 +149,8 @@ const Feed = (props) => {
     if (props.role === 'admin' && props.flagged === true) {
         onlymoderator = (
             <React.Fragment>
-                <button className={classes.spanone} onClick={() => unflagpostHandler(props._id)} ><i class="fas fa-check-circle"></i></button>
-                <button className={classes.spantwo} onClick={() => deletepostHandler(props._id)} ><i class="fas fa-flag"></i></button>
+                <button className={classes.spanone} onClick={() => unflagpostHandler(props._id)} ><i className="fas fa-check-circle"></i></button>
+                <button className={classes.spantwo} onClick={() => deletepostHandler(props._id)} ><i className="fas fa-flag"></i></button>
             </React.Fragment>
         )
     }
@@ -173,7 +173,7 @@ const Feed = (props) => {
                     <div className={classes.flex_item_two}>
                         {onlymoderator}
 
-                        <button className={classes.spanthree} onClick={showreportoptionHandler}><i class="fas fa-ellipsis-h"></i></button>
+                        <button className={classes.spanthree} onClick={showreportoptionHandler}><i className="fas fa-ellipsis-h"></i></button>
                         {showreportoption}
 
                     </div>

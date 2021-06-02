@@ -42,7 +42,9 @@ input:focus, textarea:focus, select:focus{
     /* flex: 1; */
     margin-right:10px ;
 }
-
+.gallery{
+    cursor: pointer;
+}
 .gallery i{
     padding:0px 10px;
     color:#49BD62;
@@ -72,6 +74,9 @@ input:focus, textarea:focus, select:focus{
         border-radius: 50%;
         margin-left:10px;
     
+    }
+    .gallery{
+        cursor: pointer;
     }
     .search_container_flex{
         justify-content: center;
@@ -119,6 +124,9 @@ input:focus, textarea:focus, select:focus{
         border-radius: 50%;
         margin-left:10px;
     
+    }
+    .gallery{
+        cursor: pointer;
     }
     .search_container_flex{
         justify-content: center;
